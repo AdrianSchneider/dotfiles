@@ -25,6 +25,22 @@ runtime macros/matchit.vim
 
 
 " }}}
+" Bundles {{{ ---------------------------------------------------------------
+
+Bundle 'ctrlp.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'fugitive.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'vim-scripts/wombat256.vim'
+
+
+
+" Disabled (missing deps)
+" Bundle 'jshint.vim'
+
+
+
+" }}}
 " Filetype specific options {{{ -----------------------------------------------
 
 " No wrapping for the quickfix window
@@ -54,7 +70,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP  
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
 if getline(1) =~# '^#!.*/bin/env\s\+python\>'
     setfiletype python
@@ -70,11 +86,15 @@ endif
 " }}}
 " Custom highlighting  {{{ ----------------------------------------------------
 
+colorscheme wombat256mod
+highlight Normal ctermbg=None
+hi Folded ctermfg=216
+hi Folded ctermbg=None
 
 " }}}
 " General options {{{ ---------------------------------------------------------
 
-let mapleader=","                                                                                 
+let mapleader=","
 set encoding=utf-8
 set fileencodings=utf-8
 set ruler
@@ -119,24 +139,24 @@ set ignorecase
 set smartcase
 set gdefault
 
- set scrolloff=3                                                                                   
+ set scrolloff=3
  set sidescroll=1
  set sidescrolloff=2
- 
+
  set completeopt=longest,menuone
- 
+
  if has("wildmenu")
      set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png
      set wildignore+=*~,*.swp,*.tmp,.DS_Store
      set wildmenu
      set wildmode=longest,list
  endif
- 
+
  set clipboard=unnamed
- 
+
  set nobackup
  set noswapfile
- 
+
  " Enable mouse usage in terminals
  " (allows window resizing, mousewheel scrolling, proper text highlighting)
  set mouse=n
@@ -149,7 +169,7 @@ set gdefault
      autocmd FocusGained * set ttymouse=xterm2
      autocmd BufEnter * set ttymouse=xterm2
  endif
- 
+
  if v:version >= '703'
      set undodir=~/.vim/undo
      set undofile
@@ -198,7 +218,7 @@ map <leader>= :vertical resize 115
 map <leader>dtw :%s/\s\+$//e<cr>
 nmap <leader>d :ene<CR>:bd #<CR>
 nnoremap <c-h> :SidewaysLeft<cr>
-nnoremap <c-l> :SidewaysRight<cr>                                                                 
+nnoremap <c-l> :SidewaysRight<cr>
 nnoremap <C-O> :CtrlPBuffer<cr>
 map <C-Up> :bnext<cr>
 map <C-Down> :bprevious<cr>
@@ -210,7 +230,69 @@ map <C-Down> :bprevious<cr>
 " map <leader>bl :exe "!bin/behat "`~/.vim/bin/php-scenario-to-line % \`line('.')\``"<cr>
 
 
-
 " Plugin configs {{{ ----------------------------------------------------------
+
+" SudoEdit
+nmap <Leader>W :SudoWrite<cr>
+vmap <Leader>W :SudoWrite<cr>
+
+" PHPCtags
+if executable($HOME . "/myconfig/phpctags/phpctags")
+    let g:tagbar_phpctags_bin=$HOME.'/myconfig/phpctags/phpctags'
+endif
+
+" fugitive (git)
+nmap <Leader>gs :Gstatus<cr>
+nmap <Leader>gd :Gdiff<cr>
+nmap <Leader>gg :Ggrep
+nmap <Leader>glg :Glog<cr>
+nmap <Leader>gc :Gcommit<cr>
+nmap <Leader>gmv :Gmove
+nmap <Leader>grm :Gremove
+nmap <Leader>gpu :Git push<cr>
+nmap <Leader>gt :w<cr>:bd<cr>:diffoff!<cr>
+nmap <Leader>gta :Gread<cr>:w<cr>:bd<cr>:diffoff!<cr>
+" clean up all those buffers fugitive leaves behind
+nmap <Leader>gbd :bdelete fugitive://<C-A><cr>
+
+" nerdtree
+"let g:NERDTreeDirArrows=0
+let g:NERDTreeWinSize=40
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeShowHidden=1
+
+" phpqa
+let g:phpqa_codecoverage_file = "$PWD/clover.xml"
+let g:phpqa_codesniffer_args = "--standard=Symfony2"
+
+
+nmap <Leader>n :NERDTreeCWD<cr>
+nmap <Leader>nf :NERDTreeFind<cr>
+nmap <Leader>nc :NERDTreeClose<cr>
+
+" ctrlp
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_custom_ignore = 'web/coverage/|cache/'
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+set wildignore+=*/coverage/*
+set wildignore+=*/cache/*
+
+
+" Powerline
+let g:Powerline_symbols = 'fancy'
+call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+
+" syntastic
+nmap <Leader>e :Errors<cr>
+let g:syntastic_phpcs_disable = 1
+let g:syntastic_phpmd_disable = 1
+
+" phpctags
+let g:tagbar_phpctags_bin = '~/.vim/bin/phpctags/phpctags'
+
+
+
+
+" }}}
 " Custom functions and commands {{{ -------------------------------------------
 " Local config settings {{{ ---------------------------------------------------
