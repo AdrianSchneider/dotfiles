@@ -1,0 +1,3 @@
+# Install Font
+mkdir -p ~/.fonts; cd ~/.fonts/ && git clone https://github.com/scotu/ubuntu-mono-powerline.git && cd ~ && sudo fc-cache -rv
+
