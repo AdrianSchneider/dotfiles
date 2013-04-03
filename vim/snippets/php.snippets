@@ -1,0 +1,190 @@
+snippet nclass
+	<?php
+
+	namespace `substitute(substitute(substitute(expand("%:p"), '\v(.*\/\l+)((\/\u\w+)+)\/\u\w+.php$', '\2', ''), '\/', '\\', 'g'), '\\', '', '')`;
+
+	class `Filename('', 'myClass')`
+	{
+		${1}
+	}
+snippet tclass
+	<?php
+
+	namespace `substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\\\', 'g')`;
+
+	use `system('~/.vim/bin/php-test-to-class ' . expand("%:p"))`;
+
+	class `Filename('', 'myClass')` extends \PHPUnit_Framework_TestCase
+	{
+		public function test${1}()
+		{
+			${2}
+		}
+	}
+snippet eclass
+	<?php
+
+	namespace `substitute(substitute(substitute(expand("%:p"), '\v(.*\/\l+)((\/\u\w+)+)\/\u\w+.php$', '\2', ''), '\/', '\\', 'g'), '\\', '', '')`;
+
+	use Doctrine\ORM\Mapping as ORM;
+
+	/**
+	 * @ORM\Entity
+	 */
+	class `Filename('', 'myClass')`
+	{
+		${1}
+	}
+snippet ecolumn
+	/**
+	 * @ORM\Column(type="${2}")
+	 */
+	protected $${1};${3}
+
+snippet eid
+	/**
+	 * @ORM\Id
+	 * @ORM\Column(type="integer")
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	protected $id;
+
+snippet emanytoone
+	/**
+	 * @ORM\ManyToOne(targetEntity="${2}")
+	 */
+	protected $${1};${3}
+snippet tmethod
+	public function testIt()
+	{
+		${1}
+	}
+snippet commandclass
+	<?php
+
+	namespace `substitute(substitute(substitute(expand("%:p"), '\v(.*\/\l+)((\/\u\w+)+)\/\u\w+.php$', '\2', ''), '\/', '\\', 'g'), '\\', '', '')`;
+
+	use Symfony\Component\Console\Input\InputArgument;
+	use Symfony\Component\Console\Input\InputOption;
+	use Symfony\Component\Console\Input\InputInterface;
+	use Symfony\Component\Console\Output\OutputInterface;
+	use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+
+	class `Filename('', 'myClass')` extends ContainerAwareCommand
+	{
+		protected function configure()
+		{
+			$this
+				->setName('${1}')
+				->setDescription('${2}')
+				->setDefinition(array(
+					${3}
+				))
+			;
+		}
+
+		protected function execute(InputInterface $input, OutputInterface $output)
+		{
+
+		}
+	}
+snippet formtypeclass
+	<?php
+
+	namespace `substitute(substitute(substitute(expand("%:p"), '\v(.*\/\l+)((\/\u\w+)+)\/\u\w+.php$', '\2', ''), '\/', '\\', 'g'), '\\', '', '')`;
+
+	use Symfony\Component\Form\AbstractType;
+	use Symfony\Component\Form\FormBuilderInterface;
+	use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
+	class `Filename('', 'myClass')` extends AbstractType
+	{
+		public function buildForm(FormBuilderInterface $builder, array $options)
+		{
+			$builder
+				${3}
+			;
+		}
+
+		public function setDefaultOptions(OptionsResolverInterface $resolver)
+		{
+			$resolver->setDefaults(array(
+				'data_class' => '${1}'
+			));
+		}
+
+		public function getName()
+		{
+			return '${2}';
+		}
+	}
+snippet $gmock
+	$${1} = $this->getMock('${2}');
+	$${3:$1}
+		${4}
+	;
+snippet $gmockb
+	$${1} = $this->getMockBuilder('${2}')->disableOriginalConstructor()->getMock();
+	$${3:$1}
+		${4}
+	;
+snippet gmock
+	$this->getMock('${1}')${2}
+snippet gmockb
+	$this->getMockBuilder('${1}')->disableOriginalConstructor()->getMock()${2}
+snippet assertresponse
+	$this->assertInstanceOf('Symfony\Component\HttpFoundation\Response', $response);
+	$this->assertEquals(${1}, $response->getContent());
+snippet assertredirect
+	$this->assertInstanceOf('Symfony\Component\HttpFoundation\RedirectResponse', $response);
+	$this->assertEquals(${1}, $response->getTargetUrl());
+snippet Templating
+	Symfony\Component\Templating\EngineInterface
+snippet $templating
+	$templating = $this->getMock('Symfony\Component\Templating\EngineInterface');
+	$templating
+		->expects($this->once())
+		->method('render')
+		->with('${1}'${2})
+		->will($this->returnValue($rendered = '<html>'))
+	;
+snippet UrlGenerator
+	Symfony\Component\Routing\Generator\UrlGeneratorInterface
+snippet $urlGenerator
+	$urlGenerator = $this->getMock('Symfony\Component\Routing\Generator\UrlGeneratorInterface');
+	$urlGenerator
+		${1}
+	;
+snippet Request
+	Symfony\Component\HttpFoundation\Request
+snippet Response
+	Symfony\Component\HttpFoundation\Response
+snippet RedirectResponse
+	Symfony\Component\HttpFoundation\RedirectResponse
+snippet $form
+	$formView = $this->getMockBuilder('Symfony\Component\Form\FormView')->disableOriginalConstructor()->getMock();
+
+	$form = $this->getMock('Symfony\Component\Form\Tests\FormInterface');
+	$form
+		->expects($this->once())
+		->method('createView')
+		->will($this->returnValue($formView))
+	;
+
+	$formFactory = $this->getMock('Symfony\Component\Form\FormFactoryInterface');
+	$formFactory
+		->expects($this->once())
+		->method('create')
+		->will($this->returnValue($form))
+	;
+snippet FormFactory
+	Symfony\Component\Form\FormFactoryInterface
+snippet $flashes
+	$flashes = $this->getMock('Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface');
+	$flashes
+		->expects($this->once())
+		->method('add')
+		->with('${1:success}', '${2:message}')
+	;
+snippet FlashBag
+	Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface
