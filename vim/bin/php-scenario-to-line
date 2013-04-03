@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+$file = $argv[1];
+$line = $argv[2];
+
+$contents = file($file);
+
+while (!preg_match('/^(\s*)Scenario/', $contents[$line - 1]) and isset($contents[$line-1])) {
+    var_dump($contents[$line - 1]);
+    $line--;
+}
+
+printf('%s:%d', $file, $line);

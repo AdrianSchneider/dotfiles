@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+
+echo find_test($argv[1]);
+
+function find_test($path)
+{   
+    $topLevel = null;
+    $parts = array_reverse(explode('\\', $path));
+    $topLevel = end($parts);
+
+    foreach ($parts as $dir) {
+        if (strpos($dir, 'Bundle') !== false) {
+            $topLevel = $dir;
+        }
+    }
+
+    $out = array();
+    foreach (explode('\\', $path) as $path) {
+        $out[] = $path;
+        if ($topLevel == $path) {
+            $out[] = 'Tests';
+        }
+    }
+
+    return implode('\\', $out) . 'Test';
+}

@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+echo generate_filename($argv[1]);
+
+function generate_filename($className)
+{
+    return sprintf('src/%s.php', $className);
+}
