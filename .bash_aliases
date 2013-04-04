@@ -1,5 +1,6 @@
 alias ll='ls -alF'
 alias sf='app/console'
+alias composer='php composer.phar'
 
 
 function _git_prompt() {
