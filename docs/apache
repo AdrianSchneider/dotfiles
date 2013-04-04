@@ -1,0 +1,26 @@
+# For Silent Installs
+export DEBIAN_FRONTEND=noninteractive
+
+# Dependencies
+sudo apt-get install -q -y build-essential
+
+
+# Install Latest PCRE
+wget http://iweb.dl.sourceforge.net/project/pcre/pcre/8.32/pcre-8.32.tar.gz
+tar xzvf pcre-8.32.tar.gz
+cd pcre-8.32.tar.gz
+./configure && make && make intall
+
+# Download Apache HTTPD+APN
+wget http://apache.mirror.nexicom.net//httpd/httpd-2.4.4.tar.gz
+tar xzvf httpd-2.4.4
+cd httpd-2.4.4
+wget http://apache.marz.ca//apr/apr-1.4.6.tar.gz
+wget http://apache.marz.ca//apr/apr-util-1.5.1.tar.gz
+tar xzvf apr-1.4.6.tar.gz
+tar xzvf apr-util-1.5.1.tar.gz
+mv apr-1.4.6 srclib/apr
+mv apr-util-1.5.1 srclib/apr-util
+
+# Configure Apache
+./configure --prefix=/usr/local/apache --with-included-apr --enable-so

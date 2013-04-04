@@ -1,0 +1,3 @@
+# Taskbar
+sudo apt-get install -q -y xfce4-panel
+ln ~/dotfiles/config/xfce4 ~/.config/xfce4
