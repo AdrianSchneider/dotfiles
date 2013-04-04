@@ -224,10 +224,10 @@ map <C-Up> :bnext<cr>
 map <C-Down> :bprevious<cr>
 
 " Custom PHP testing commands
-" map <Leader>un :!mkdir -p "`dirname \`~/.vim/bin/php-file-to-test %\``"<cr>:!touch "`~/.vim/bin/ph
-" map <leader>ub :!bin/behat %<cr>
-" map <leader>bl ?Scenario<cr>:noh<cr>:exe "!bin/behat " . expand('%') . ":" . line('.')<cr>
-" map <leader>bl :exe "!bin/behat "`~/.vim/bin/php-scenario-to-line % \`line('.')\``"<cr>
+map <Leader>un :!mkdir -p "`dirname \`~/.vim/bin/php-file-to-test %\``"<cr>:!touch "`~/.vim/bin/php-file-to-test %`"<cr><cr>:vs `~/.vim/bin/php-file-to-test %`<cr>
+map <leader>ub :!bin/behat %<cr>
+map <leader>bl ?Scenario<cr>:noh<cr>:exe "!bin/behat " . expand('%') . ":" . line('.')<cr>
+map <leader>bl :exe "!bin/behat "`~/.vim/bin/php-scenario-to-line % \`line('.')\``"<cr>
 
 
 " Plugin configs {{{ ----------------------------------------------------------
@@ -295,4 +295,19 @@ let g:tagbar_phpctags_bin = '~/.vim/bin/phpctags/phpctags'
 
 " }}}
 " Custom functions and commands {{{ -------------------------------------------
+
+:autocmd FileType php noremap <leader>>l :w!<CR>::!/usr/bin/env php -l %<CR>                                                                                                                                  
+:autocmd FileType php noremap <Leader>u :w!<CR>::!$PWD/bin/phpunit -c app `~/.vim/bin/php-file-to-test %`<CR>
+:autocmd FileType php noremap <C-M> :w!<CR>::!/usr/bin/env php %<CR>
+
+function! ClassToFile()
+    let class = input('Class to create? ')
+    let file =system('~/.vim/bin/php-class-to-file "' . class . '"')
+    return file
+endfunction
+                                                                                                                                                                                                              
+map <C-n> :execute ':edit ' . ClassToFile()<cr>
+
+
+" }}}
 " Local config settings {{{ ---------------------------------------------------
