@@ -2,7 +2,7 @@
 sudo apt-get install -q -y libxml2-dev libcurl4-openssl-dev pkg-config libmcrypt-dev
 
 # GD / Image Dependencies
-sudo apt-get install mercurial libpng-dev libjpeg-dev cmake-curses-gui cmake
+sudo apt-get install -q -y mercurial libpng-dev libjpeg-dev cmake-curses-gui cmake
 hg clone https://bitbucket.org/pierrejoye/gd-libgd
 cd gd-libgd
 mkdir build
@@ -10,10 +10,11 @@ cd build
 cmake ..
 make
 sudo make install
+cd ../..
 
 
 # Download PHP
-wget http://www.php.net/get/php-5.3.23.tar.gz/from/ar2.php.net/mirror
+wget http://ar2.php.net/distributions/php-5.3.23.tar.gz
 tar xzvf php-5.3.23
 cd php-5.3.23
 
@@ -38,4 +39,4 @@ cd php-5.3.23
     --enable-calendar \
     --enable-sockets
 
-make && make install
+make && sudo make install
