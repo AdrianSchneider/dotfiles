@@ -7,3 +7,9 @@ sudo apt-get autoremove appmenu-gtk appmenu-gtk3 appmenu-qt
 
 # Move Buttons to Right
 gconftool-2 --set /apps/metacity/general/button_layout --type string menu:minimize,maximize,close
+
+# Disable Guests (restart to take effect)
+sudo bash -c "echo 'allow-guest=false' >> /edit/lightdm/lightdm.conf' >> /edit/lightdm/lightdm.conf"
+
+# Remove Overlay Scrollbar
+sudo apt-get remove overlay-scrollbar liboverlay-scrollbar-0.2-0 liboverlay-scrollbar3-0.2-0
