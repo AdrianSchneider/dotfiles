@@ -26,3 +26,6 @@ mv apr-util-1.5.1 srclib/apr-util
 ./configure --prefix=/usr/local/apache --with-included-apr --enable-so
 make
 sudo make install
+
+sudo ln /usr/local/apache/conf/httpd.conf /etc/httpd
+sudo ln /usr/local/apache/conf/extra/httpd-vhosts.conf /etc/vhosts
