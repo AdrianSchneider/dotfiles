@@ -99,7 +99,7 @@ set encoding=utf-8
 set fileencodings=utf-8
 set ruler
 set pastetoggle=<F12>
-set title
+"set title
 set laststatus=2
 set visualbell t_vb=
 set formatoptions+=croqnwl
