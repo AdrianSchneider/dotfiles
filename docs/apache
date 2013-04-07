@@ -24,3 +24,5 @@ mv apr-util-1.5.1 srclib/apr-util
 
 # Configure Apache
 ./configure --prefix=/usr/local/apache --with-included-apr --enable-so
+make
+sudo make install
