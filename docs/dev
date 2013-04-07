@@ -4,6 +4,7 @@ sudo apt-get install -q -y git vim tmux
 # Setup Config
 cd ~
 git clone https://github.com/AdrianSchneider/dotfiles.git
+ln ~/dotfiles/.bash_aliases ~/.bash_aliases
 ln ~/dotfiles/vim ~/.vim -s
 ln ~/dotfiles/vim/.vimrc ~/.vimrc
 ln ~/dotfiles/.tmux.conf ~/.tmux.conf
