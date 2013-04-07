@@ -12,6 +12,9 @@ ln ~/dotfiles/.tmux.conf ~/.tmux.conf
 git config --global color.ui true
 git config --global user.name "Adrian Schneider"
 git config --global user.email "siradrian@gmail.com"
+git config --global core.excludesfile "/home/adrian/.gitignore"
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
+
 
 # Configure Vim
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle/
