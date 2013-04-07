@@ -1,3 +1,9 @@
 # Taskbar
 sudo apt-get install -q -y xfce4-panel
 ln ~/dotfiles/config/xfce4 ~/.config/xfce4
+
+# Remove Global Menubar
+sudo apt-get autoremove appmenu-gtk appmenu-gtk3 appmenu-qt 
+
+# Move Buttons to Right
+gconftool-2 --set /apps/metacity/general/button_layout --type string menu:minimize,maximize,close
