@@ -32,6 +32,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'fugitive.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/wombat256.vim'
+Bundle 'beyondwords/vim-twig'
 
 
 
@@ -86,7 +87,7 @@ endif
 " }}}
 " Custom highlighting  {{{ ----------------------------------------------------
 
-colorscheme wombat256mod
+colorscheme wombat256
 highlight Normal ctermbg=None
 hi Folded ctermfg=216
 hi Folded ctermbg=None
