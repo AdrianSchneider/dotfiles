@@ -10,6 +10,7 @@ ln ~/dotfiles/vim/.vimrc ~/.vimrc
 ln ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 git config --global color.ui true
+git config --global core.editor vim
 git config --global user.name "Adrian Schneider"
 git config --global user.email "siradrian@gmail.com"
 git config --global core.excludesfile "/home/adrian/.gitignore"
