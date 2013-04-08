@@ -33,6 +33,7 @@ Bundle 'fugitive.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/wombat256.vim'
 Bundle 'beyondwords/vim-twig'
+Bundle 'godlygeek/tabular'
 
 
 
