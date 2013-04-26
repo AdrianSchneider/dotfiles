@@ -27,31 +27,38 @@ runtime macros/matchit.vim
 " }}}
 " Bundles {{{ ---------------------------------------------------------------
 
+" IDE / Core
 Bundle 'ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'fugitive.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'vim-scripts/wombat256.vim'
-Bundle 'beyondwords/vim-twig'
-Bundle 'godlygeek/tabular'
-Bundle 'tpope/vim-surround'
-Bundle 'AndrewRadev/sideways.vim'
-Bundle 'vim-indent-object'
-Bundle 'tristen/vim-sparkup'
-Bundle 'bkad/CamelCaseMotion'
-Bundle 'coderifous/textobj-word-column.vim'
-Bundle 'sjl/clam.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'AndrewRadev/splitjoin.vim'
-Bundle 'pangloss/vim-javascript'
 Bundle 'msanders/snipmate.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'vim-scripts/wombat256.vim'
+Bundle 'sjl/clam.vim'
+Bundle 'airblade/vim-gitgutter'
 
+" Text Manipulation
+Bundle 'AndrewRadev/sideways.vim'
+Bundle 'tpope/vim-surround.git'
+Bundle 'coderifous/textobj-word-column.vim'
+Bundle 'argtextobj.vim'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'godlygeek/tabular'
+Bundle 'bkad/CamelCaseMotion'
+Bundle 'tristen/vim-sparkup'
 
+" Language Specific
+Bundle 'beyondwords/vim-twig'
+Bundle 'arnaud-lb/vim-php-namespace'
+Bundle 'techlivezheng/tagbar-phpctags'
+Bundle 'pangloss/vim-javascript'
+Bundle 'leshill/vim-json'
+" Bundle 'spf13/PIV'
 
-" Disabled (missing deps)
-" Bundle 'jshint.vim'
-
-
+" Bundle 'jshint.vim' - missing node deps
 
 " }}}
 " Filetype specific options {{{ -----------------------------------------------
@@ -197,7 +204,7 @@ set gdefault
 " }}}
 " Key mappings {{{ ------------------------------------------------------------
 
-
+" Typos
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
@@ -214,32 +221,25 @@ nnoremap <Leader>w :setlocal nowrap! nolist!<cr>
 
 " quickly turn off search highlighting
 map <Leader><space> :noh<cr>
-"map <up> <nop>
-"map <down> <nop>
-"map <left> <nop>
-"map <right> <nop>
+
+" disable arrows
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
 " allow space to toggle folding
 noremap <Space> za
 
-" Remap F1 to escape, because that happens a lot when reaching. :)
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
+" semicolon for command mode
 map ; :
 
-map <C-Tab> :bnext<cr>
-map <C-S-Tab> :bprevious<cr>
 map <F8> :TagbarToggle<CR>
 map <leader>= :vertical resize 115
+
+" delete trailing whitespace
 map <leader>dtw :%s/\s\+$//e<cr>
 nmap <leader>d :ene<CR>:bd #<CR>
-nnoremap <c-h> :SidewaysLeft<cr>
-nnoremap <c-l> :SidewaysRight<cr>
-nnoremap <C-O> :CtrlPBuffer<cr>
-map <C-Up> :bnext<cr>
-map <C-Down> :bprevious<cr>
 
 " Custom PHP testing commands
 map <Leader>un :!mkdir -p "`dirname \`~/.vim/bin/php-file-to-test %\``"<cr>:!touch "`~/.vim/bin/php-file-to-test %`"<cr><cr>:vs `~/.vim/bin/php-file-to-test %`<cr>
@@ -248,6 +248,7 @@ map <leader>bl ?Scenario<cr>:noh<cr>:exe "!bin/behat " . expand('%') . ":" . lin
 map <leader>bl :exe "!bin/behat "`~/.vim/bin/php-scenario-to-line % \`line('.')\``"<cr>
 
 
+" }}}
 " Plugin configs {{{ ----------------------------------------------------------
 
 " SudoEdit
@@ -273,21 +274,23 @@ nmap <Leader>gta :Gread<cr>:w<cr>:bd<cr>:diffoff!<cr>
 " clean up all those buffers fugitive leaves behind
 nmap <Leader>gbd :bdelete fugitive://<C-A><cr>
 
+" shift arguments left/right
+nnoremap <c-h> :SidewaysLeft<cr>
+nnoremap <c-l> :SidewaysRight<cr>
+
 " nerdtree
-"let g:NERDTreeDirArrows=0
 let g:NERDTreeWinSize=40
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore=['\.git$']
 
-" phpqa
-let g:phpqa_codecoverage_file = "$PWD/clover.xml"
-let g:phpqa_codesniffer_args = "--standard=Symfony2"
-
-
 nmap <Leader>n :NERDTreeCWD<cr>
 nmap <Leader>nf :NERDTreeFind<cr>
 nmap <Leader>nc :NERDTreeClose<cr>
+
+" phpqa
+let g:phpqa_codecoverage_file = "$PWD/clover.xml"
+let g:phpqa_codesniffer_args = "--standard=Symfony2"
 
 " ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -295,7 +298,7 @@ let g:ctrlp_custom_ignore = 'web/coverage/|cache/'
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 set wildignore+=*/coverage/*
 set wildignore+=*/cache/*
-
+nnoremap <C-O> :CtrlPBuffer<cr>
 
 " Powerline
 let g:Powerline_symbols = 'fancy'
@@ -310,12 +313,10 @@ let g:syntastic_phpmd_disable = 1
 let g:tagbar_phpctags_bin = '~/.vim/bin/phpctags/phpctags'
 
 
-
-
 " }}}
 " Custom functions and commands {{{ -------------------------------------------
 
-:autocmd FileType php noremap <leader>>l :w!<CR>::!/usr/bin/env php -l %<CR>                                                                                                                                  
+:autocmd FileType php noremap <leader>>l :w!<CR>::!/usr/bin/env php -l %<CR>
 :autocmd FileType php noremap <Leader>u :w!<CR>::!$PWD/bin/phpunit -c app `~/.vim/bin/php-file-to-test %`<CR>
 :autocmd FileType php noremap <C-M> :w!<CR>::!/usr/bin/env php %<CR>
 
@@ -324,9 +325,7 @@ function! ClassToFile()
     let file =system('~/.vim/bin/php-class-to-file "' . class . '"')
     return file
 endfunction
-                                                                                                                                                                                                              
+
 map <C-n> :execute ':edit ' . ClassToFile()<cr>
 
-
 " }}}
-" Local config settings {{{ ---------------------------------------------------
