@@ -36,6 +36,7 @@ Bundle 'beyondwords/vim-twig'
 Bundle 'godlygeek/tabular'
 Bundle 'tpope/vim-surround'
 Bundle 'AndrewRadev/sideways.vim'
+Bundle 'vim-indent-object'
 
 
 
