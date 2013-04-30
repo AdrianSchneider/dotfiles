@@ -37,6 +37,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'tpope/vim-surround'
 Bundle 'AndrewRadev/sideways.vim'
 Bundle 'vim-indent-object'
+Bundle 'tristen/vim-sparkup'
 
 
 
