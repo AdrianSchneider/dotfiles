@@ -195,6 +195,8 @@ cnoreabbrev Vs vs
 nnoremap / /\v
 vnoremap / /\v
 
+nnoremap vv ^v$h
+
 " Toggle wrapping
 nnoremap <Leader>w :setlocal nowrap! nolist!<cr>
 
