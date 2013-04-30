@@ -157,7 +157,7 @@ set gdefault
  set completeopt=longest,menuone
 
  if has("wildmenu")
-     set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png
+     set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.git
      set wildignore+=*~,*.swp,*.tmp,.DS_Store
      set wildmenu
      set wildmode=longest,list
@@ -273,6 +273,7 @@ nmap <Leader>gbd :bdelete fugitive://<C-A><cr>
 let g:NERDTreeWinSize=40
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowHidden=1
+let g:NERDTreeIgnore=['\.git$']
 
 " phpqa
 let g:phpqa_codecoverage_file = "$PWD/clover.xml"
