@@ -21,4 +21,4 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle/
 vim +BundleInstall +qall
 mkdir ~/.vim/colors
-ln ~/.vim/bundle/wombat256.vim/colors/wombat256.vim ~/.vim/colors/wombat256.vim
+wget http://www.vim.org/scripts/download_script.php?src_id=13397 -O ~/.vim/colors/
