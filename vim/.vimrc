@@ -43,6 +43,7 @@ Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'sjl/clam.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'AndrewRadev/splitjoin.vim'
+Bundle 'pangloss/vim-javascript'
 
 
 
