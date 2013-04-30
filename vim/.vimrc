@@ -83,6 +83,9 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
+" filetype setup
+autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig
+
 if getline(1) =~# '^#!.*/bin/env\s\+python\>'
     setfiletype python
 endif
