@@ -38,6 +38,11 @@ Bundle 'tpope/vim-surround'
 Bundle 'AndrewRadev/sideways.vim'
 Bundle 'vim-indent-object'
 Bundle 'tristen/vim-sparkup'
+Bundle 'bkad/CamelCaseMotion'
+Bundle 'coderifous/textobj-word-column.vim'
+Bundle 'sjl/clam.vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'AndrewRadev/splitjoin.vim'
 
 
 
