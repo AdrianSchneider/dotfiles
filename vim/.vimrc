@@ -255,8 +255,7 @@ map <leader>bl :exe "!bin/behat "`~/.vim/bin/php-scenario-to-line % \`line('.')\
 " Plugin configs {{{ ----------------------------------------------------------
 
 " SudoEdit
-nmap <Leader>W :SudoWrite<cr>
-vmap <Leader>W :SudoWrite<cr>
+cnoremap w!! w !sudo tee % >/dev/null
 
 " PHPCtags
 if executable($HOME . "/myconfig/phpctags/phpctags")
