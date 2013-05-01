@@ -54,7 +54,7 @@ Bundle 'tristen/vim-sparkup'
 Bundle 'beyondwords/vim-twig'
 Bundle 'arnaud-lb/vim-php-namespace'
 Bundle 'techlivezheng/tagbar-phpctags'
-Bundle 'pangloss/vim-javascript'
+Bundle 'AdrianSchneider/vim-javascript'
 Bundle 'leshill/vim-json'
 " Bundle 'spf13/PIV'
 
