@@ -235,7 +235,7 @@ map <right> <nop>
 noremap <Space> za
 
 " focus current fold from - https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc
-nnoremap <c-z> mzzMzvzz15<c-e>
+nnoremap <c-z> mzzMzvzz<c-e>
 
 " semicolon for command mode
 map ; :
