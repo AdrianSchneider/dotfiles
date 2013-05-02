@@ -297,6 +297,7 @@ let g:phpqa_codesniffer_args = "--standard=Symfony2"
 " ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_custom_ignore = 'web/coverage/|cache/'
+let g:ctrlp_working_path_mode = 0
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 set wildignore+=*/coverage/*
 set wildignore+=*/cache/*
