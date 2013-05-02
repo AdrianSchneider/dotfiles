@@ -6,8 +6,8 @@ cd ~
 git clone https://github.com/AdrianSchneider/dotfiles.git
 ln ~/dotfiles/.bash_aliases ~/.bash_aliases
 ln ~/dotfiles/vim ~/.vim -s
-ln ~/dotfiles/vim/.vimrc ~/.vimrc
-ln ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln ~/dotfiles/vim/.vimrc ~/.vimrc -s
+ln ~/dotfiles/.tmux.conf ~/.tmux.conf -s
 
 git config --global color.ui true
 git config --global core.editor vim
