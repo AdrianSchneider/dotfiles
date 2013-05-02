@@ -56,6 +56,7 @@ Bundle 'arnaud-lb/vim-php-namespace'
 Bundle 'techlivezheng/tagbar-phpctags'
 Bundle 'AdrianSchneider/vim-javascript'
 Bundle 'leshill/vim-json'
+Bundle 'groenewege/vim-less'
 " Bundle 'spf13/PIV'
 
 " Bundle 'jshint.vim' - missing node deps
@@ -81,7 +82,7 @@ autocmd BufReadPost *
 " folding setup
 let php_folding = 1
 autocmd FileType css,php setlocal foldmethod=syntax
-autocmd FileType html.twig setlocal foldmethod=manual
+autocmd FileType html.twig setlocal foldmethod=marker foldmarker={%\ block,{%\ endblock
 
 " completion setup
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -94,6 +95,8 @@ autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
 " filetype setup
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig
+autocmd BufNewFile,BufRead *.less set syntax=css
+autocmd BufNewFile,BufRead *.less set filetype=less
 
 if getline(1) =~# '^#!.*/bin/env\s\+python\>'
     setfiletype python
