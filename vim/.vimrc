@@ -39,6 +39,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/wombat256.vim'
 Bundle 'sjl/clam.vim'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'scrooloose/nerdcommenter'
 
 " Text Manipulation
 Bundle 'AndrewRadev/sideways.vim'
