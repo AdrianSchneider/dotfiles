@@ -49,6 +49,7 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'godlygeek/tabular'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'tristen/vim-sparkup'
+Bundle 'AndrewRadev/switch.vim'
 
 " Language Specific
 Bundle 'beyondwords/vim-twig'
@@ -292,6 +293,8 @@ let g:NERDTreeIgnore=['\.git$']
 nmap <Leader>n :NERDTreeCWD<cr>
 nmap <Leader>nf :NERDTreeFind<cr>
 nmap <Leader>nc :NERDTreeClose<cr>
+
+nmap - :Switch<cr>
 
 " phpqa
 let g:phpqa_codecoverage_file = "$PWD/clover.xml"
