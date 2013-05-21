@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+var filename = process.argv[2];
+
+if (filename.slice(0, 4) == 'test') { 
+    console.log(filename);
+    process.exit();
+}
+
+console.log('test/' + filename);

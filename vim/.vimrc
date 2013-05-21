@@ -94,7 +94,7 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
 " filetype setup
-autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig
+autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig filetype=html.twig
 autocmd BufNewFile,BufRead *.less set syntax=css
 autocmd BufNewFile,BufRead *.less set filetype=less
 
@@ -247,12 +247,6 @@ map <leader>= :vertical resize 115
 map <leader>dtw :%s/\s\+$//e<cr>
 nmap <leader>d :ene<CR>:bd #<CR>
 
-" Custom PHP testing commands
-map <Leader>un :!mkdir -p "`dirname \`~/.vim/bin/php-file-to-test %\``"<cr>:!touch "`~/.vim/bin/php-file-to-test %`"<cr><cr>:vs `~/.vim/bin/php-file-to-test %`<cr>
-map <leader>ub :!bin/behat %<cr>
-map <leader>bl ?Scenario<cr>:noh<cr>:exe "!bin/behat " . expand('%') . ":" . line('.')<cr>
-map <leader>bl :exe "!bin/behat "`~/.vim/bin/php-scenario-to-line % \`line('.')\``"<cr>
-
 
 " }}}
 " Plugin configs {{{ ----------------------------------------------------------
@@ -295,7 +289,7 @@ nmap <Leader>nc :NERDTreeClose<cr>
 
 " phpqa
 let g:phpqa_codecoverage_file = "$PWD/clover.xml"
-let g:phpqa_codesniffer_args = "--standard=Symfony2"
+let g:phpqa_codesniffer_args = "--standard=Symfony3"
 
 " ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -314,6 +308,7 @@ call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 nmap <Leader>e :Errors<cr>
 let g:syntastic_phpcs_disable = 1
 let g:syntastic_phpmd_disable = 1
+let g:syntastic_phpqa_disable = 1
 
 " phpctags
 let g:tagbar_phpctags_bin = '~/.vim/bin/phpctags/phpctags'
@@ -334,4 +329,16 @@ endfunction
 
 map <C-n> :execute ':edit ' . ClassToFile()<cr>
 
+" }}}
+" Language-Specific {{{
+    " PHP {{{ -------------------------------------------
+        " Custom PHP testing commands
+        map <Leader>un :!mkdir -p "`dirname \`~/.vim/bin/php-file-to-test %\``"<cr>:!touch "`~/.vim/bin/php-file-to-test %`"<cr><cr>:vs `~/.vim/bin/php-file-to-test %`<cr>
+        map <leader>ub :!bin/behat %<cr>
+        map <leader>bl ?Scenario<cr>:noh<cr>:exe "!bin/behat " . expand('%') . ":" . line('.')<cr>
+        map <leader>bl :exe "!bin/behat "`~/.vim/bin/php-scenario-to-line % \`line('.')\``"<cr>
+    " }}}
+    " NodeJS {{{ -------------------------------------------
+    
+    " }}}}
 " }}}
