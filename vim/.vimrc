@@ -40,6 +40,7 @@ Bundle 'vim-scripts/wombat256.vim'
 Bundle 'sjl/clam.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'AdrianSchneider/vim-browser-reload-linux'
 
 " Text Manipulation
 Bundle 'AndrewRadev/sideways.vim'
