@@ -100,6 +100,7 @@ autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig
 autocmd BufNewFile,BufRead *.less set syntax=css
 autocmd BufNewFile,BufRead *.less set filetype=less
+autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig filetype=html.twig
 
 if getline(1) =~# '^#!.*/bin/env\s\+python\>'
     setfiletype python
@@ -110,6 +111,7 @@ endif
 if getline(1) =~# '^#!.*/bin/env\s\+node\>'
     setfiletype javascript
 endif
+
 
 
 " }}}
@@ -331,12 +333,93 @@ let g:tagbar_phpctags_bin = '~/.vim/bin/phpctags/phpctags'
 :autocmd FileType php noremap <Leader>u :w!<CR>::!$PWD/bin/phpunit -c app `~/.vim/bin/php-file-to-test %`<CR>
 :autocmd FileType php noremap <C-M> :w!<CR>::!/usr/bin/env php %<CR>
 
-function! ClassToFile()
-    let class = input('Class to create? ')
-    let file =system('~/.vim/bin/php-class-to-file "' . class . '"')
-    return file
-endfunction
-
 map <C-n> :execute ':edit ' . ClassToFile()<cr>
+
+    " TDD {{{
+    let g:tdd_command = ''
+    let g:tdd_fail_command = 'bp'
+    let g:tdd_autorun = []
+    let g:tdd_dir = 'test'
+    let g:tdd_patterns = ['^test']
+
+    map <leader>ut :call AutoTestToggle(expand('%:.'))<cr>
+    map <leader>u- :call AutoTestRemoveAll()<cr>
+
+    function! TddLaunch(file)
+        if g:tdd_command == ''
+            return
+        endif
+
+        let l:testpath = a:file
+        let l:testfiles = [l:testpath]
+        let l:runfiles = []
+
+        for i in g:tdd_autorun
+            call add(l:testfiles, i)
+        endfor
+
+        for i in l:testfiles
+            if filereadable(i)
+                call add(l:runfiles, i)
+            endif
+        endfor
+
+        if len(l:runfiles)
+            if g:tdd_fail_command
+                let l:run = g:tdd_command . join(l:runfiles, ' ') . ' || ' . g:tdd_fail_command
+            else
+                let l:run = g:tdd_command . join(l:runfiles, ' ')
+            endif
+            call TddTmuxSend(l:run)
+        endif
+    endfunction
+
+    function! AutoTest(file)
+        call add(g:tdd_autorun, a:file)
+    endfunction
+
+    function! AutoTestRemove(file)
+        let l:new_autorun = []
+        for i in g:tdd_autorun
+            if i != a:file
+                call add(l:new_autorun, a:file)
+            endif
+        endfor
+
+        let g:tdd_autorun = l:new_autorun
+    endfunction
+
+    function! AutoTestToggle(file)
+        if index(g:tdd_autorun, a:file) == -1
+            call AutoTest(a:file)
+        else
+            call AutoTestRemove(a:file)
+        endif
+    endfunction
+
+    function! AutoTestRemoveAll()
+        let g:tdd_autorun = []
+    endfunction
+
+    function! TddTmuxSend(cmd)
+        let l:panes = TddTmuxCountPanes()
+        if l:panes > 1
+            call system('tmux send-keys -t ' . TddTmuxGetTarget() . ' "' . a:cmd . '" Enter')
+        endif
+    endfunction
+
+    function! TddTmuxCountPanes()
+        return len(split(system('tmux list-panes'), "\n"))
+    endfunction
+
+    function! TddTmuxGetTarget()
+        let l:windows = split(system('tmux list-windows'), "\n")
+        for windowinfo in l:windows
+            if windowinfo =~ ".*active.*"
+                return "0:" . windowinfo[0] . ".1"
+            endif
+        endfor
+    endfunction
+    " }}}
 
 " }}}
