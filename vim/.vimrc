@@ -365,7 +365,7 @@ map <C-n> :execute ':edit ' . ClassToFile()<cr>
         endfor
 
         if len(l:runfiles)
-            if g:tdd_fail_command
+            if !empty(g:tdd_fail_command)
                 let l:run = g:tdd_command . join(l:runfiles, ' ') . ' || ' . g:tdd_fail_command
             else
                 let l:run = g:tdd_command . join(l:runfiles, ' ')
