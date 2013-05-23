@@ -41,6 +41,7 @@ Bundle 'sjl/clam.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'AdrianSchneider/vim-browser-reload-linux'
+Bundle 'Yggdroot/indentLine'
 
 " Text Manipulation
 Bundle 'AndrewRadev/sideways.vim'
