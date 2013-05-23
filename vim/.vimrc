@@ -374,6 +374,18 @@ map <C-n> :execute ':edit ' . ClassToFile()<cr>
         endif
     endfunction
 
+    function! TddSplit(file)
+        if filereadable(a:file)
+            execute ':vs ' . a:file
+            return
+        endif
+
+        let l:dir = system('dirname ' . a:file)
+        call system('mkdir -p ' . l:dir)
+        call system('touch ' . a:file)
+        execute ':vs ' . a:file
+    endfunction
+
     function! AutoTest(file)
         call add(g:tdd_autorun, a:file)
     endfunction
