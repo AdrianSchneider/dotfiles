@@ -13,5 +13,3 @@ let g:tdd_dir = 'tests'
 function! DetectPHPTest(filename)
     return system('~/.vim/bin/php-file-to-test ' . a:filename)
 endfunction
-
-autocmd BufWritePost *.php execute 'call TddLaunch(DetectPHPTest(expand("%:.")))'

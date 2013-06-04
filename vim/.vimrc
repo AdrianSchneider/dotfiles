@@ -41,7 +41,6 @@ Bundle 'sjl/clam.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'AdrianSchneider/vim-browser-reload-linux'
-Bundle 'Yggdroot/indentLine'
 
 " Text Manipulation
 Bundle 'AndrewRadev/sideways.vim'
@@ -53,6 +52,8 @@ Bundle 'godlygeek/tabular'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'tristen/vim-sparkup'
 Bundle 'AndrewRadev/switch.vim'
+Bundle 'kana/vim-textobj-user'
+Bundle 'kana/vim-textobj-lastpat'
 
 " Language Specific
 Bundle 'beyondwords/vim-twig'
@@ -112,6 +113,9 @@ endif
 if getline(1) =~# '^#!.*/bin/env\s\+node\>'
     setfiletype javascript
 endif
+
+autocmd BufWritePost *.js execute "call TddLaunch(DetectJavascriptTest(expand('%:.')))"
+autocmd BufWritePost *.php execute 'call TddLaunch(DetectPHPTest(expand("%:.")))'
 
 
 
@@ -309,6 +313,7 @@ let g:phpqa_codesniffer_args = "--standard=Symfony2"
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_custom_ignore = 'web/coverage/|cache/'
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_by_filename = 1
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 set wildignore+=*/coverage/*
 set wildignore+=*/cache/*
@@ -343,8 +348,8 @@ map <C-n> :execute ':edit ' . ClassToFile()<cr>
     let g:tdd_dir = 'test'
     let g:tdd_patterns = ['^test']
 
-    map <leader>ut :call AutoTestToggle(expand('%:.'))<cr>
-    map <leader>u- :call AutoTestRemoveAll()<cr>
+    map <leader>tt :call AutoTestToggle(expand('%:.'))<cr>
+    map <leader>t- :call AutoTestRemoveAll()<cr>
 
     function! TddLaunch(file)
         if g:tdd_command == ''

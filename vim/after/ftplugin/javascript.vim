@@ -21,4 +21,3 @@ function! DetectJavascriptTest(file)
 endfunction
 
 nmap <Leader>ts :call TddSplit(DetectJavascriptTest(expand('%:.')))<cr>
-autocmd BufWritePost *.js execute "call TddLaunch(DetectJavascriptTest(expand('%:.')))"
