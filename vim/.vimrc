@@ -347,6 +347,7 @@ map <C-n> :execute ':edit ' . ClassToFile()<cr>
     let g:tdd_autorun = []
     let g:tdd_dir = 'test'
     let g:tdd_patterns = ['^test']
+    let g:tdd_tmux_target = ''
 
     map <leader>tt :call AutoTestToggle(expand('%:.'))<cr>
     map <leader>t- :call AutoTestRemoveAll()<cr>
@@ -415,13 +416,17 @@ map <C-n> :execute ':edit ' . ClassToFile()<cr>
         endif
     endfunction
 
+    function! TddSetTmuxTarget(target)
+        let g:tdd_tmux_target = a:target
+    endfunction
+
     function! AutoTestRemoveAll()
         let g:tdd_autorun = []
     endfunction
 
     function! TddTmuxSend(cmd)
         let l:panes = TddTmuxCountPanes()
-        if l:panes > 1
+        if l:panes > 1 || g:tdd_tmux_target
             call system('tmux send-keys -t ' . TddTmuxGetTarget() . ' "' . a:cmd . '" Enter')
         endif
     endfunction
@@ -431,6 +436,9 @@ map <C-n> :execute ':edit ' . ClassToFile()<cr>
     endfunction
 
     function! TddTmuxGetTarget()
+        if g:tdd_tmux_target
+            return g:tdd_tmux_target
+        endif
         let l:windows = split(system('tmux list-windows'), "\n")
         for windowinfo in l:windows
             if windowinfo =~ ".*active.*"
