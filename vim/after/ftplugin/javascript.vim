@@ -1,8 +1,9 @@
 setlocal foldmethod=syntax
-setlocal foldlevel=8
-setlocal foldnestmax=3
-setlocal shiftwidth=2
-setlocal tabstop=2
+setlocal foldlevel=300
+" setlocal foldlevel=8
+" setlocal foldnestmax=3
+" setlocal shiftwidth=2
+" setlocal tabstop=2
 
 let b:surround_63 = "if (\1\1) { \r }"
 
