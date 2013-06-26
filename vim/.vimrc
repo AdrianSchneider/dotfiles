@@ -114,7 +114,7 @@ if getline(1) =~# '^#!.*/bin/env\s\+node\>'
     setfiletype javascript
 endif
 
-autocmd BufWritePost *.js execute "call TddLaunch(DetectJavascriptTest(expand('%:.')))"
+autocmd BufWritePost *.js execute "call TddLaunch(DetectJavascriptTest(expand('%:.'), 0))"
 autocmd BufWritePost *.php execute 'call TddLaunch(DetectPHPTest(expand("%:.")))'
 
 

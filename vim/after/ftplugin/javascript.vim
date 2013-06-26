@@ -17,7 +17,9 @@ function! DetectJavascriptTest(file, split)
         if a:split
             if a:file =~ "^test"
                 return DetectJavascriptSource(a:file)
-            else
+            endif
+        else
+            if a:file =~ prefix
                 return a:file
             endif
         endif
@@ -31,4 +33,4 @@ function! DetectJavascriptSource(file)
     return join(l:removed, "/")
 endfunction
 
-nmap <Leader>ts :call TddSplit(DetectJavascriptTest(expand('%:.'), true))<cr>
+nmap <Leader>ts :call TddSplit(DetectJavascriptTest(expand('%:.'), 1))<cr>
