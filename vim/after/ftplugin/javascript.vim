@@ -12,10 +12,14 @@ let g:tdd_dir = 'test'
 let g:tdd_patterns = ['^test', '^spec']
 
 " Find anything in test/ or spec/
-function! DetectJavascriptTest(file)
+function! DetectJavascriptTest(file, split)
     for prefix in g:tdd_patterns
-        if a:file =~ "^test"
-            return DetectJavascriptSource(a:file)
+        if a:split
+            if a:file =~ "^test"
+                return DetectJavascriptSource(a:file)
+            else
+                return a:file
+            endif
         endif
     endfor
     return g:tdd_dir . '/' . a:file
@@ -27,4 +31,4 @@ function! DetectJavascriptSource(file)
     return join(l:removed, "/")
 endfunction
 
-nmap <Leader>ts :call TddSplit(DetectJavascriptTest(expand('%:.')))<cr>
+nmap <Leader>ts :call TddSplit(DetectJavascriptTest(expand('%:.'), true))<cr>
