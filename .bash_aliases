@@ -1,7 +1,10 @@
 alias ll='ls -alF'
 alias sf='app/console'
 alias composer='php composer.phar'
-
+alias ..='cd ..'
+alias ...='cd ../..'
+alias copy='xclip -selection clipboard'
+alias paste='xclip -selection clipboard -o'
 
 function _git_prompt() {
     local git_status="`git status -unormal 2>&1`"
