@@ -1,0 +1,2 @@
+#!/bin/sh
+cat ~/.ssh/authorized_keys | sed "/$1/s/^[^\#]/#\\0/" > ./tmp_keys && mv ./tmp_keys ~/.ssh/authorized_keys
