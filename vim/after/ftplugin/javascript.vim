@@ -7,7 +7,7 @@ setlocal foldlevel=300
 
 let b:surround_63 = "if (\1\1) { \r }"
 
-let g:tdd_command = './node_modules/.bin/mocha '
+let g:tdd_command = 'clear; ./node_modules/.bin/mocha '
 let g:tdd_dir = 'test'
 let g:tdd_patterns = ['^test', '^spec']
 
@@ -34,3 +34,4 @@ function! DetectJavascriptSource(file)
 endfunction
 
 nmap <Leader>ts :call TddSplit(DetectJavascriptTest(expand('%:.'), 1))<cr>
+nmap <Leader>tr :call TddToggleAutoRestart()<cr>

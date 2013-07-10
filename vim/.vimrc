@@ -331,6 +331,13 @@ let g:syntastic_phpmd_disable = 1
 " phpctags
 let g:tagbar_phpctags_bin = '~/.vim/bin/phpctags/phpctags'
 
+" Tabularize
+nmap <Leader>a& :Tabularize /&<CR>
+vmap <Leader>a& :Tabularize /&<CR>
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:<CR> 
+
 
 " }}}
 " Custom functions and commands {{{ -------------------------------------------
@@ -343,6 +350,7 @@ map <C-n> :execute ':edit ' . ClassToFile()<cr>
 
     " TDD {{{
     let g:tdd_command = ''
+    let g:tdd_auto_restart = 0
     let g:tdd_fail_command = 'bp'
     let g:tdd_autorun = []
     let g:tdd_dir = 'test'
@@ -372,10 +380,14 @@ map <C-n> :execute ':edit ' . ClassToFile()<cr>
         endfor
 
         if len(l:runfiles)
+            let l:prefix = ""
+            if g:tdd_auto_restart
+               let  l:prefix = "forever restartall; "
+            endif
             if !empty(g:tdd_fail_command)
-                let l:run = g:tdd_command . join(l:runfiles, ' ') . ' || ' . g:tdd_fail_command
+                let l:run = l:prefix . g:tdd_command . join(l:runfiles, ' ') . ' || ' . g:tdd_fail_command
             else
-                let l:run = g:tdd_command . join(l:runfiles, ' ')
+                let l:run = l:prefix . g:tdd_command . join(l:runfiles, ' ')
             endif
             call TddTmuxSend(l:run)
         endif
@@ -418,6 +430,10 @@ map <C-n> :execute ':edit ' . ClassToFile()<cr>
 
     function! TddSetTmuxTarget(target)
         let g:tdd_tmux_target = a:target
+    endfunction
+
+    function! TddToggleAutoRestart()
+        let g:tdd_auto_restart = !g:tdd_auto_restart
     endfunction
 
     function! AutoTestRemoveAll()
