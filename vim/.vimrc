@@ -379,6 +379,7 @@ map <C-n> :execute ':edit ' . ClassToFile()<cr>
             endif
         endfor
 
+
         if len(l:runfiles)
             let l:prefix = ""
             if g:tdd_auto_restart
@@ -442,8 +443,9 @@ map <C-n> :execute ':edit ' . ClassToFile()<cr>
 
     function! TddTmuxSend(cmd)
         let l:panes = TddTmuxCountPanes()
-        if l:panes > 1 || g:tdd_tmux_target
+        if l:panes > 1 || strlen(g:tdd_tmux_target)
             call system('tmux send-keys -t ' . TddTmuxGetTarget() . ' "' . a:cmd . '" Enter')
+        else
         endif
     endfunction
 
