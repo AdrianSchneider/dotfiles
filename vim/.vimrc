@@ -454,7 +454,7 @@ map <C-n> :execute ':edit ' . ClassToFile()<cr>
     endfunction
 
     function! TddTmuxGetTarget()
-        if g:tdd_tmux_target
+        if strlen(g:tdd_tmux_target)
             return g:tdd_tmux_target
         endif
         let l:windows = split(system('tmux list-windows'), "\n")
