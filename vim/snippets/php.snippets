@@ -1,7 +1,7 @@
 snippet nclass
 	<?php
 
-	namespace `substitute(substitute(substitute(expand("%:p"), '\v(.*\/\l+)((\/\u\w+)+)\/\u\w+.php$', '\2', ''), '\/', '\\', 'g'), '\\', '', '')`;
+	namespace `substitute(substitute(substitute(expand("%:p"), '\v(.*\/\l+)((\/\u\w+)+)\/\u\w+.php$', '\2', ''), '\/', '\\\\', 'g'), '\\\', '', '')`;
 
 	class `Filename('', 'myClass')`
 	{
@@ -12,7 +12,7 @@ snippet tclass
 
 	namespace `substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\\\', 'g')`;
 
-	use `system('~/.vim/bin/php-test-to-class ' . expand("%:p"))`;
+	use `substitute(system('~/.vim/bin/php-test-to-class ' . expand("%:p")), '\\', '\\\\', 'g')`;
 
 	class `Filename('', 'myClass')` extends \PHPUnit_Framework_TestCase
 	{
@@ -24,7 +24,7 @@ snippet tclass
 snippet eclass
 	<?php
 
-	namespace `substitute(substitute(substitute(expand("%:p"), '\v(.*\/\l+)((\/\u\w+)+)\/\u\w+.php$', '\2', ''), '\/', '\\', 'g'), '\\', '', '')`;
+	namespace `substitute(substitute(substitute(expand("%:p"), '\v(.*\/\l+)((\/\u\w+)+)\/\u\w+.php$', '\2', ''), '\/', '\\\\', 'g'), '\\\\', '', '')`;
 
 	use Doctrine\ORM\Mapping as ORM;
 
