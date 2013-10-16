@@ -114,6 +114,8 @@ if getline(1) =~# '^#!.*/bin/env\s\+node\>'
     setfiletype javascript
 endif
 
+au BufRead,BufNewFile *.md set syntax=markdown
+autocmd BufNewFile,BufRead *.md execute "setf markdown"
 autocmd BufWritePost *.js execute "call TddLaunch(DetectJavascriptTest(expand('%:.'), 0))"
 autocmd BufWritePost *.php execute 'call TddLaunch(DetectPHPTest(expand("%:.")))'
 
