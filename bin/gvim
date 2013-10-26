@@ -2,6 +2,6 @@
 if [ -d "$1" ] || [ -z "$1" ]; then
     gnome-terminal -e "vim -c 'cd $1'"
 else
-    gnome-terminal -e "vim $1"
+    gnome-terminal -e "vim '$1'"
 fi
 
