@@ -6,7 +6,7 @@ map <buffer> <Leader>pe :call PhpExpandClass()<CR>
 
 set foldlevel=1
 
-let g:tdd_command = 'bin/phpunit -c app '
+let g:tdd_command = 'clear; bin/phpunit -c app '
 let g:tdd_dir = 'tests'
 
 " Find using php-file-to-test
