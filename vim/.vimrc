@@ -472,3 +472,7 @@ map <C-n> :execute ':edit ' . ClassToFile()<cr>
     " }}}
 
 " }}}
+
+if filereadable(".vim.local")
+    so .vim.local
+endif
