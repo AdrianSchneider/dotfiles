@@ -66,6 +66,9 @@ Bundle 'groenewege/vim-less'
 
 " Bundle 'jshint.vim' - missing node deps
 
+" Miscellaneous
+Bundle 'rkitover/vimpager'
+
 " }}}
 " Filetype specific options {{{ -----------------------------------------------
 
