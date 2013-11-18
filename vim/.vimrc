@@ -41,7 +41,7 @@ Bundle 'sjl/clam.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'AdrianSchneider/vim-browser-reload-linux'
-Bundle 'file:///home/adrian/Projects/adrian/vim-tdd'
+Bundle 'AdrianSchneider/vim-tdd'
 
 " Text Manipulation
 Bundle 'AndrewRadev/sideways.vim'
