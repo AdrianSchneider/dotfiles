@@ -15,6 +15,25 @@ class TestFinder
         }
 
         $parts = explode('/', str_replace('.php', '', $inputFile));
+
+        $out = array();
+        foreach ($parts as $dir) {
+            if ($dir == 'src') {
+                $dir = 'test';
+            }
+            $out[] = $dir;
+        }
+
+        return implode(DIRECTORY_SEPARATOR, $out) . 'Test.php';
+    }
+
+    public function findOldTestFile($inputFile)
+    {
+        if (strpos($inputFile, 'Test.php') !== false) {
+            return $inputFile;
+        }
+
+        $parts = explode('/', str_replace('.php', '', $inputFile));
         $split = $this->findSplitPoint($parts);
 
         $out = array();

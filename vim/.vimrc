@@ -41,6 +41,7 @@ Bundle 'sjl/clam.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'AdrianSchneider/vim-browser-reload-linux'
+Bundle 'file:///home/adrian/Projects/adrian/vim-tdd'
 
 " Text Manipulation
 Bundle 'AndrewRadev/sideways.vim'
@@ -69,6 +70,7 @@ Bundle 'groenewege/vim-less'
 " Miscellaneous
 Bundle 'rkitover/vimpager'
 
+
 " }}}
 " Filetype specific options {{{ -----------------------------------------------
 
@@ -91,6 +93,7 @@ autocmd BufReadPost *
 let php_folding = 1
 autocmd FileType css,php setlocal foldmethod=syntax
 autocmd FileType html.twig setlocal foldmethod=marker foldmarker={%\ block,{%\ endblock
+autocmd FileType vim setlocal foldmethod=marker
 
 " completion setup
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -119,9 +122,6 @@ endif
 
 au BufRead,BufNewFile *.md set syntax=markdown
 autocmd BufNewFile,BufRead *.md execute "setf markdown"
-autocmd BufWritePost *.js execute "call TddLaunch(DetectJavascriptTest(expand('%:.'), 0))"
-autocmd BufWritePost *.php execute 'call TddLaunch(DetectPHPTest(expand("%:.")))'
-
 
 
 " }}}
@@ -280,6 +280,9 @@ if executable($HOME . "/myconfig/phpctags/phpctags")
     let g:tagbar_phpctags_bin=$HOME.'/myconfig/phpctags/phpctags'
 endif
 
+" tdd
+let g:tdd_fail_command = 'bp'
+
 " fugitive (git)
 nmap <Leader>gs :Gstatus<cr>
 nmap <Leader>gd :Gdiff<cr>
@@ -351,127 +354,13 @@ nmap <Leader>a: :Tabularize /:<CR>
 :autocmd FileType php noremap <Leader>u :w!<CR>::!$PWD/bin/phpunit -c app `~/.vim/bin/php-file-to-test %`<CR>
 :autocmd FileType php noremap <C-M> :w!<CR>::!/usr/bin/env php %<CR>
 
+
+let g:tdd_php_mapper = '~/.vim/bin/php-file-to-test'
+function! DetectPHPTest(file)
+    return system(g:tdd_php_mapper . ' ' . a:file)
+endfunction
+
 map <C-n> :execute ':edit ' . ClassToFile()<cr>
-
-    " TDD {{{
-    let g:tdd_command = ''
-    let g:tdd_auto_restart = 0
-    let g:tdd_fail_command = 'bp'
-    let g:tdd_autorun = []
-    let g:tdd_dir = 'test'
-    let g:tdd_patterns = ['^test']
-    let g:tdd_tmux_target = ''
-
-    map <leader>tt :call AutoTestToggle(expand('%:.'))<cr>
-    map <leader>t- :call AutoTestRemoveAll()<cr>
-
-    function! TddLaunch(file)
-        if g:tdd_command == ''
-            return
-        endif
-
-        let l:testpath = a:file
-        let l:testfiles = [l:testpath]
-        let l:runfiles = []
-
-        for i in g:tdd_autorun
-            call add(l:testfiles, i)
-        endfor
-
-        for i in l:testfiles
-            if filereadable(i)
-                call add(l:runfiles, i)
-            endif
-        endfor
-
-
-        if len(l:runfiles)
-            let l:prefix = ""
-            if g:tdd_auto_restart
-               let  l:prefix = "forever restartall; "
-            endif
-            if !empty(g:tdd_fail_command)
-                let l:run = l:prefix . g:tdd_command . join(l:runfiles, ' ') . ' || ' . g:tdd_fail_command
-            else
-                let l:run = l:prefix . g:tdd_command . join(l:runfiles, ' ')
-            endif
-            call TddTmuxSend(l:run)
-        endif
-    endfunction
-
-    function! TddSplit(file)
-        if filereadable(a:file)
-            execute ':vs ' . a:file
-            return
-        endif
-
-        let l:dir = system('dirname ' . a:file)
-        call system('mkdir -p ' . l:dir)
-        call system('touch ' . a:file)
-        execute ':vs ' . a:file
-    endfunction
-
-    function! AutoTest(file)
-        call add(g:tdd_autorun, a:file)
-    endfunction
-
-    function! AutoTestRemove(file)
-        let l:new_autorun = []
-        for i in g:tdd_autorun
-            if i != a:file
-                call add(l:new_autorun, a:file)
-            endif
-        endfor
-
-        let g:tdd_autorun = l:new_autorun
-    endfunction
-
-    function! AutoTestToggle(file)
-        if index(g:tdd_autorun, a:file) == -1
-            call AutoTest(a:file)
-        else
-            call AutoTestRemove(a:file)
-        endif
-    endfunction
-
-    function! TddSetTmuxTarget(target)
-        let g:tdd_tmux_target = a:target
-    endfunction
-
-    function! TddToggleAutoRestart()
-        let g:tdd_auto_restart = !g:tdd_auto_restart
-    endfunction
-
-    function! AutoTestRemoveAll()
-        let g:tdd_autorun = []
-    endfunction
-
-    function! TddTmuxSend(cmd)
-        let l:panes = TddTmuxCountPanes()
-        if l:panes > 1 || strlen(g:tdd_tmux_target)
-            call system('tmux send-keys -t ' . TddTmuxGetTarget() . ' "' . a:cmd . '" Enter')
-        else
-        endif
-    endfunction
-
-    function! TddTmuxCountPanes()
-        return len(split(system('tmux list-panes'), "\n"))
-    endfunction
-
-    function! TddTmuxGetTarget()
-        if strlen(g:tdd_tmux_target)
-            return g:tdd_tmux_target
-        endif
-        let l:windows = split(system('tmux list-windows'), "\n")
-        for windowinfo in l:windows
-            if windowinfo =~ ".*active.*"
-                return "0:" . windowinfo[0] . ".1"
-            endif
-        endfor
-    endfunction
-    " }}}
-
-" }}}
 
 if filereadable(".vim.local")
     so .vim.local
