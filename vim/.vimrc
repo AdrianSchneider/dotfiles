@@ -108,6 +108,7 @@ autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig
 autocmd BufNewFile,BufRead *.less set syntax=css
 autocmd BufNewFile,BufRead *.less set filetype=less
+autocmd BufNewFile,BufRead .vim.local set filetype=vim
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig filetype=html.twig
 
 if getline(1) =~# '^#!.*/bin/env\s\+python\>'
@@ -263,7 +264,7 @@ map <leader>dtw :%s/\s\+$//e<cr>
 nmap <leader>d :ene<CR>:bd #<CR>
 
 " Custom PHP testing commands
-map <Leader>un :!mkdir -p "`dirname \`~/.vim/bin/php-file-to-test %\``"<cr>:!touch "`~/.vim/bin/php-file-to-test %`"<cr><cr>:vs `~/.vim/bin/php-file-to-test %`<cr>
+" TODO work into vim-tdd somehow
 map <leader>ub :!bin/behat %<cr>
 map <leader>bl ?Scenario<cr>:noh<cr>:exe "!bin/behat " . expand('%') . ":" . line('.')<cr>
 map <leader>bl :exe "!bin/behat "`~/.vim/bin/php-scenario-to-line % \`line('.')\``"<cr>
