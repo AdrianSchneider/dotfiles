@@ -16,7 +16,7 @@ alias untrack="git status --porcelain | cut -d ' ' -f 2 | tr -d '\n' | xargs -0 
 alias copy='xclip -selection clipboard'
 alias paste='xclip -selection clipboard -o'
 alias cq='clear; qissues'
-alias vimt='vim '\''+call TddSetTmuxTarget("test:1.0")'\'''
+alias vimt="vim '+TddTarget test:1.0'"
 alias bp='paplay /usr/share/sounds/KDE-Im-Message-In.ogg'
 alias ll='ls -al'
 
