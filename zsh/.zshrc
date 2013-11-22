@@ -18,6 +18,7 @@ alias cq='clear; qissues'
 alias vimt="vim '+TddTarget test:1.0'"
 alias bp='paplay /usr/share/sounds/KDE-Im-Message-In.ogg'
 alias ll='ls -al'
+alias qi='qissues'
 
 # Rename the terminal's title
 rename() {
