@@ -12,7 +12,6 @@ ZSH_THEME="adrian"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias composer='php composer.phar'
-alias untrack="git status --porcelain | cut -d ' ' -f 2 | tr -d '\n' | xargs -0 rm"
 alias copy='xclip -selection clipboard'
 alias paste='xclip -selection clipboard -o'
 alias cq='clear; qissues'
