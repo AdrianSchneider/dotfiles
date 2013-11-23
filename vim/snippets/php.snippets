@@ -62,7 +62,7 @@ snippet tmethod
 snippet commandclass
 	<?php
 
-	namespace `substitute(substitute(substitute(expand("%:p"), '\v(.*\/\l+)((\/\u\w+)+)\/\u\w+.php$', '\2', ''), '\/', '\\', 'g'), '\\', '', '')`;
+	namespace `substitute(substitute(substitute(expand("%:p"), '\v(.*\/\l+)((\/\u\w+)+)\/\u\w+.php$', '\2', ''), '\/', '\\\\', 'g'), '\\\', '', '')`;
 
 	use Symfony\Component\Console\Input\InputArgument;
 	use Symfony\Component\Console\Input\InputOption;
@@ -91,7 +91,7 @@ snippet commandclass
 snippet formtypeclass
 	<?php
 
-	namespace `substitute(substitute(substitute(expand("%:p"), '\v(.*\/\l+)((\/\u\w+)+)\/\u\w+.php$', '\2', ''), '\/', '\\', 'g'), '\\', '', '')`;
+	namespace `substitute(substitute(substitute(expand("%:p"), '\v(.*\/\l+)((\/\u\w+)+)\/\u\w+.php$', '\2', ''), '\/', '\\\\', 'g'), '\\\', '', '')`;
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
