@@ -351,9 +351,7 @@ nmap <Leader>a: :Tabularize /:<CR>
 " }}}
 " Custom functions and commands {{{ -------------------------------------------
 
-:autocmd FileType php noremap <leader>>l :w!<CR>::!/usr/bin/env php -l %<CR>
-:autocmd FileType php noremap <Leader>u :w!<CR>::!$PWD/bin/phpunit -c app `~/.vim/bin/php-file-to-test %`<CR>
-:autocmd FileType php noremap <C-M> :w!<CR>::!/usr/bin/env php %<CR>
+:autocmd FileType php noremap <leader>li :w!<CR>::!/usr/bin/env php -l %<CR>
 
 
 let g:tdd_php_mapper = '~/.vim/bin/php-file-to-test'
