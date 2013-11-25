@@ -11,10 +11,19 @@ alias vimt="vim '+TddTarget test:1.0'"
 alias bp='paplay /usr/share/sounds/KDE-Im-Message-In.ogg'
 alias ll='ls -alF'
 alias qi='qissues'
+alias swapqi='swap .qissues qissues-secondary'
 
 # Rename the terminal's title
 rename() {
     echo -ne "\033]0;$1\007";
+}
+
+# Swap two files
+function swap() {
+    local TMPFILE=tmp.$$
+    mv "$1" $TMPFILE
+    mv "$2" "$1"
+    mv $TMPFILE "$2"
 }
 
 # ZSH Config
