@@ -110,6 +110,7 @@ autocmd BufNewFile,BufRead *.less set syntax=css
 autocmd BufNewFile,BufRead *.less set filetype=less
 autocmd BufNewFile,BufRead .vim.local set filetype=vim
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig filetype=html.twig
+autocmd BufNewFile,Bufread qissues set syntax=yaml
 
 if getline(1) =~# '^#!.*/bin/env\s\+python\>'
     setfiletype python

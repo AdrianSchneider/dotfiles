@@ -11,7 +11,7 @@ alias vimt="vim '+TddTarget test:1.0'"
 alias bp='paplay /usr/share/sounds/KDE-Im-Message-In.ogg'
 alias ll='ls -alF'
 alias qi='qissues'
-alias swapqi='swap .qissues qissues-secondary'
+alias qiswap='swap .qissues .qissues-secondary'
 
 # Rename the terminal's title
 rename() {
