@@ -7,6 +7,15 @@ snippet nclass
 	{
 		${1}
 	}
+snippet ninterface
+	<?php
+
+	namespace `substitute(substitute(substitute(expand("%:p"), '\v(.*\/\l+)((\/\u\w+)+)\/\u\w+.php$', '\2', ''), '\/', '\\\\', 'g'), '\\\', '', '')`;
+
+	interface `Filename('', 'myClass')`
+	{
+		${1}
+	}
 snippet tclass
 	<?php
 
