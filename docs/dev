@@ -1,5 +1,8 @@
 # Requirements
-sudo apt-get install -q -y git vim tmux
+sudo apt-get install -q -y git vim tmux ack-group
+
+# Rename ack
+sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep 
 
 # Setup Config
 cd ~
