@@ -1,3 +1,6 @@
+# Ubuntu Mongo Powerline
+mkdir -p ~/.fonts; cd ~/.fonts/ && git clone https://github.com/scotu/ubuntu-mono-powerline.git && cd ~ && sudo fc-cache -rv && fc-cache
+
 # Taskbar
 sudo apt-get install -q -y xfce4-panel
 ln ~/dotfiles/config/xfce4 ~/.config/xfce4
