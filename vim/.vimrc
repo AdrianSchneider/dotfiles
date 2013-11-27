@@ -26,51 +26,112 @@ runtime macros/matchit.vim
 
 " }}}
 " Bundles {{{ ---------------------------------------------------------------
+    " IDE / Core {{{
 
-" IDE / Core
-Bundle 'ctrlp.vim'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'fugitive.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'mileszs/ack.vim'
-Bundle 'AndrewRadev/splitjoin.vim'
-Bundle 'msanders/snipmate.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'vim-scripts/wombat256.vim'
-Bundle 'sjl/clam.vim'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'AdrianSchneider/vim-browser-reload-linux'
-Bundle 'AdrianSchneider/vim-tdd'
+    " Open file/buffer by name
+    Bundle 'ctrlp.vim'
 
-" Text Manipulation
-Bundle 'AndrewRadev/sideways.vim'
-Bundle 'tpope/vim-surround.git'
-Bundle 'coderifous/textobj-word-column.vim'
-Bundle 'argtextobj.vim'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'godlygeek/tabular'
-Bundle 'bkad/CamelCaseMotion'
-Bundle 'tristen/vim-sparkup'
-Bundle 'AndrewRadev/switch.vim'
-Bundle 'kana/vim-textobj-user'
-Bundle 'kana/vim-textobj-lastpat'
+    " Better file tree
+    Bundle 'scrooloose/nerdtree'
 
-" Language Specific
-Bundle 'beyondwords/vim-twig'
-Bundle 'arnaud-lb/vim-php-namespace'
-Bundle 'techlivezheng/tagbar-phpctags'
-Bundle 'AdrianSchneider/vim-javascript'
-Bundle 'leshill/vim-json'
-Bundle 'groenewege/vim-less'
-" Bundle 'spf13/PIV'
+    " Better statusbar
+    Bundle 'Lokaltog/vim-powerline'
 
-" Bundle 'jshint.vim' - missing node deps
+    " Git integration
+    Bundle 'fugitive.vim'
 
-" Miscellaneous
-Bundle 'rkitover/vimpager'
+    " Ack integration
+    Bundle 'mileszs/ack.vim'
 
+    " Better snippets
+    Bundle 'msanders/snipmate.vim'
 
+    " Syntax checkers for various languages
+    Bundle 'scrooloose/syntastic'
+
+    " Color scheme
+    Bundle 'vim-scripts/wombat256.vim'
+
+    " Shell command / buffer integration
+    Bundle 'sjl/clam.vim'
+
+    " Inline diffs
+    Bundle 'airblade/vim-gitgutter'
+
+    " Commenting hotkeys
+    Bundle 'scrooloose/nerdcommenter'
+
+    " Automatically reload browser on save
+    Bundle 'AdrianSchneider/vim-browser-reload-linux'
+
+    " TDD plugins: open test in split, run tests on save, etc.
+    Bundle 'AdrianSchneider/vim-tdd'
+
+    " }}}
+    " Text Manipulation {{{
+
+    " Move arguments left/right
+    Bundle 'AndrewRadev/sideways.vim'
+
+    " Easily wrap text, or change surrounding chars
+    Bundle 'tpope/vim-surround.git'
+
+    " Text object: word columns
+    Bundle 'coderifous/textobj-word-column.vim'
+
+    " Text object: arguments
+    Bundle 'argtextobj.vim'
+
+    " Text object: indentation
+    Bundle 'michaeljsmith/vim-indent-object'
+
+    " Custom text objects
+    Bundle 'kana/vim-textobj-user'
+
+    " Text object: search matches
+    Bundle 'kana/vim-textobj-lastpat'
+
+    " Align text in columns
+    Bundle 'godlygeek/tabular'
+
+    " Text object: camel case word
+    Bundle 'bkad/CamelCaseMotion'
+
+    " HTML expansion
+    Bundle 'tristen/vim-sparkup'
+
+    " Toggle text values (true -> false, etc.)
+    Bundle 'AndrewRadev/switch.vim'
+
+    " Split and join text lines better
+    Bundle 'AndrewRadev/splitjoin.vim'
+
+    " }}}
+    " Language Specific {{{
+   
+    " Twig Support
+    Bundle 'beyondwords/vim-twig'
+
+    " PHP Namespace helpers
+    Bundle 'arnaud-lb/vim-php-namespace'
+
+    " PHP Ctags
+    Bundle 'techlivezheng/tagbar-phpctags'
+
+    " Javascript support
+    Bundle 'AdrianSchneider/vim-javascript'
+
+    " JSON Support
+    Bundle 'leshill/vim-json'
+
+    " LESS (css) support
+    Bundle 'groenewege/vim-less'
+    " }}}
+    " Miscellaneous {{{
+
+    " vim-highlighted 'vimcat' command
+    Bundle 'rkitover/vimpager'
+    " }}}
 " }}}
 " Filetype specific options {{{ -----------------------------------------------
 
