@@ -21,117 +21,114 @@ autocmd BufEnter * let &titlestring = expand("%:t")
 
 runtime macros/matchit.vim
 
-
-
-
 " }}}
 " Bundles {{{ ---------------------------------------------------------------
-    " IDE / Core {{{
+" >> IDE / Core {{{
 
-    " Open file/buffer by name
-    Bundle 'ctrlp.vim'
+" Open file/buffer by name
+Bundle 'ctrlp.vim'
 
-    " Better file tree
-    Bundle 'scrooloose/nerdtree'
+" Better file tree
+Bundle 'scrooloose/nerdtree'
 
-    " Better statusbar
-    Bundle 'Lokaltog/vim-powerline'
+" Better statusbar
+Bundle 'Lokaltog/vim-powerline'
 
-    " Git integration
-    Bundle 'fugitive.vim'
+" Git integration
+Bundle 'fugitive.vim'
 
-    " Ack integration
-    Bundle 'mileszs/ack.vim'
+" Ack integration
+Bundle 'mileszs/ack.vim'
 
-    " Better snippets
-    Bundle 'msanders/snipmate.vim'
+" Better snippets
+Bundle 'msanders/snipmate.vim'
 
-    " Syntax checkers for various languages
-    Bundle 'scrooloose/syntastic'
+" Syntax checkers for various languages
+Bundle 'scrooloose/syntastic'
 
-    " Color scheme
-    Bundle 'vim-scripts/wombat256.vim'
+" Color scheme
+Bundle 'vim-scripts/wombat256.vim'
 
-    " Shell command / buffer integration
-    Bundle 'sjl/clam.vim'
+" Shell command / buffer integration
+Bundle 'sjl/clam.vim'
 
-    " Inline diffs
-    Bundle 'airblade/vim-gitgutter'
+" Inline diffs
+Bundle 'airblade/vim-gitgutter'
 
-    " Commenting hotkeys
-    Bundle 'scrooloose/nerdcommenter'
+" Commenting hotkeys
+Bundle 'scrooloose/nerdcommenter'
 
-    " Automatically reload browser on save
-    Bundle 'AdrianSchneider/vim-browser-reload-linux'
+" Automatically reload browser on save
+Bundle 'AdrianSchneider/vim-browser-reload-linux'
 
-    " TDD plugins: open test in split, run tests on save, etc.
-    Bundle 'AdrianSchneider/vim-tdd'
+" TDD plugins: open test in split, run tests on save, etc.
+Bundle 'AdrianSchneider/vim-tdd'
 
-    " }}}
-    " Text Manipulation {{{
+" }}}
+" >> Text Manipulation {{{
 
-    " Move arguments left/right
-    Bundle 'AndrewRadev/sideways.vim'
+" Move arguments left/right
+Bundle 'AndrewRadev/sideways.vim'
 
-    " Easily wrap text, or change surrounding chars
-    Bundle 'tpope/vim-surround.git'
+" Easily wrap text, or change surrounding chars
+Bundle 'tpope/vim-surround.git'
 
-    " Text object: word columns
-    Bundle 'coderifous/textobj-word-column.vim'
+" Text object: word columns
+Bundle 'coderifous/textobj-word-column.vim'
 
-    " Text object: arguments
-    Bundle 'argtextobj.vim'
+" Text object: arguments
+Bundle 'argtextobj.vim'
 
-    " Text object: indentation
-    Bundle 'michaeljsmith/vim-indent-object'
+" Text object: indentation
+Bundle 'michaeljsmith/vim-indent-object'
 
-    " Custom text objects
-    Bundle 'kana/vim-textobj-user'
+" Custom text objects
+Bundle 'kana/vim-textobj-user'
 
-    " Text object: search matches
-    Bundle 'kana/vim-textobj-lastpat'
+" Text object: search matches
+Bundle 'kana/vim-textobj-lastpat'
 
-    " Align text in columns
-    Bundle 'godlygeek/tabular'
+" Align text in columns
+Bundle 'godlygeek/tabular'
 
-    " Text object: camel case word
-    Bundle 'bkad/CamelCaseMotion'
+" Text object: camel case word
+Bundle 'bkad/CamelCaseMotion'
 
-    " HTML expansion
-    Bundle 'tristen/vim-sparkup'
+" HTML expansion
+Bundle 'tristen/vim-sparkup'
 
-    " Toggle text values (true -> false, etc.)
-    Bundle 'AndrewRadev/switch.vim'
+" Toggle text values (true -> false, etc.)
+Bundle 'AndrewRadev/switch.vim'
 
-    " Split and join text lines better
-    Bundle 'AndrewRadev/splitjoin.vim'
+" Split and join text lines better
+Bundle 'AndrewRadev/splitjoin.vim'
 
-    " }}}
-    " Language Specific {{{
-   
-    " Twig Support
-    Bundle 'beyondwords/vim-twig'
+" }}}
+" >> Language Specific {{{
 
-    " PHP Namespace helpers
-    Bundle 'arnaud-lb/vim-php-namespace'
+" Twig Support
+Bundle 'beyondwords/vim-twig'
 
-    " PHP Ctags
-    Bundle 'techlivezheng/tagbar-phpctags'
+" PHP Namespace helpers
+Bundle 'arnaud-lb/vim-php-namespace'
 
-    " Javascript support
-    Bundle 'AdrianSchneider/vim-javascript'
+" PHP Ctags
+Bundle 'techlivezheng/tagbar-phpctags'
 
-    " JSON Support
-    Bundle 'leshill/vim-json'
+" Javascript support
+Bundle 'AdrianSchneider/vim-javascript'
 
-    " LESS (css) support
-    Bundle 'groenewege/vim-less'
-    " }}}
-    " Miscellaneous {{{
+" JSON Support
+Bundle 'leshill/vim-json'
 
-    " vim-highlighted 'vimcat' command
-    Bundle 'rkitover/vimpager'
-    " }}}
+" LESS (css) support
+Bundle 'groenewege/vim-less'
+" }}}
+" >> Miscellaneous {{{
+
+" vim-highlighted 'vimcat' command
+Bundle 'rkitover/vimpager'
+" }}}
 " }}}
 " Filetype specific options {{{ -----------------------------------------------
 
@@ -140,23 +137,26 @@ autocmd BufReadPost quickfix setlocal nowrap
 
 " re-read vimrc after writing it
 autocmd BufWritePost *vimrc source $HOME/.vimrc
+
+" markers for config files
 autocmd BufRead *vimrc,*zshrc,*tmux.conf setlocal foldmethod=marker
 
-" When editing a file, always jump to the last known cursor position
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
+" jump to last known position when possible
 autocmd BufReadPost *
 	\ if line("'\"") > 0 && line("'\"") <= line("$") |
 	\   exe "normal g`\"" |
 	\ endif
 
-" folding setup
+" >> folding setup {{{
+
 let php_folding = 1
 autocmd FileType css,php setlocal foldmethod=syntax
 autocmd FileType html.twig setlocal foldmethod=marker foldmarker={%\ block,{%\ endblock
 autocmd FileType vim setlocal foldmethod=marker
 
-" completion setup
+" }}}
+" >> completion setup {{{
+
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -165,13 +165,18 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
-" filetype setup
+" }}}
+" >> filetype setup {{{
+
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig
 autocmd BufNewFile,BufRead *.less set syntax=css
 autocmd BufNewFile,BufRead *.less set filetype=less
 autocmd BufNewFile,BufRead .vim.local set filetype=vim
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig filetype=html.twig
 autocmd BufNewFile,Bufread qissues set syntax=yaml
+" }}
+
+" filetype from hashbang {{{
 
 if getline(1) =~# '^#!.*/bin/env\s\+python\>'
     setfiletype python
@@ -183,9 +188,13 @@ if getline(1) =~# '^#!.*/bin/env\s\+node\>'
     setfiletype javascript
 endif
 
+" }}}
+
 au BufRead,BufNewFile *.md set syntax=markdown
 autocmd BufNewFile,BufRead *.md execute "setf markdown"
 
+
+" }}}
 
 " }}}
 " Custom highlighting  {{{ ----------------------------------------------------
@@ -203,7 +212,6 @@ set encoding=utf-8
 set fileencodings=utf-8
 set ruler
 set pastetoggle=<F12>
-"set title
 set laststatus=2
 set visualbell t_vb=
 set formatoptions+=croqnwl
@@ -243,110 +251,119 @@ set ignorecase
 set smartcase
 set gdefault
 
- set scrolloff=3
- set sidescroll=1
- set sidescrolloff=2
+set scrolloff=3
+set sidescroll=1
+set sidescrolloff=2
 
- set completeopt=longest,menuone
+set completeopt=longest,menuone
 
- if has("wildmenu")
-     set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.git
-     set wildignore+=*~,*.swp,*.tmp,.DS_Store
-     set wildmenu
-     set wildmode=longest,list
- endif
+if has("wildmenu")
+    set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.git
+    set wildignore+=*~,*.swp,*.tmp,.DS_Store
+    set wildmenu
+    set wildmode=longest,list
+endif
 
- set clipboard=unnamed
+set clipboard=unnamed
 
- set nobackup
- set noswapfile
+set nobackup
+set noswapfile
 
- " Enable mouse usage in terminals
- " (allows window resizing, mousewheel scrolling, proper text highlighting)
- set mouse=n
- set ttymouse=xterm2
- " Workaround for bug in vim that breaks mouse support when in tmux.
- " bug: http://groups.google.com/group/vim_dev/browse_thread/thread/0416d81258cbb5a0?pli=1
- " workaround: https://wincent.com/blog/tweaking-command-t-and-vim-for-use-in-the-terminal-and-tmux
- if $TMUX != '' || $TERM == 'rxvt-256color'
-     autocmd VimEnter * set ttymouse=xterm2
-     autocmd FocusGained * set ttymouse=xterm2
-     autocmd BufEnter * set ttymouse=xterm2
- endif
+" Enable mouse usage in terminals
+" (allows window resizing, mousewheel scrolling, proper text highlighting)
+set mouse=n
+set ttymouse=xterm2
+" Workaround for bug in vim that breaks mouse support when in tmux.
+" bug: http://groups.google.com/group/vim_dev/browse_thread/thread/0416d81258cbb5a0?pli=1
+" workaround: https://wincent.com/blog/tweaking-command-t-and-vim-for-use-in-the-terminal-and-tmux
+if $TMUX != '' || $TERM == 'rxvt-256color'
+    autocmd VimEnter * set ttymouse=xterm2
+    autocmd FocusGained * set ttymouse=xterm2
+    autocmd BufEnter * set ttymouse=xterm2
+endif
 
- if v:version >= '703'
-     set undodir=~/.vim/undo
-     set undofile
- endif
-
-
-
+if v:version >= '703'
+    set undodir=~/.vim/undo
+    set undofile
+endif
 
 " }}}
 " Key mappings {{{ ------------------------------------------------------------
+" >> change vim behaviour {{{
 
-" Typos
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev Qall qall
-cnoreabbrev Vs vs
+" semicolon for command mode
+map ; :
 
 " Change regex handling
 nnoremap / /\v
 vnoremap / /\v
 
-nnoremap vv ^v$h
-
-" Toggle wrapping
-nnoremap <Leader>w :setlocal nowrap! nolist!<cr>
-
-" quickly turn off search highlighting
-map <Leader><space> :noh<cr>
-
-" disable arrows
+" training wheels
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
+" }}}
+" >> abbreviations {{{
+
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+cnoreabbrev Vs vs
+
+" }}}
+" >> new mappings {{{
+
+" Select line minus whitespace
+nnoremap vv ^v$h
+
+" Toggle wrapping
+nnoremap <Leader>w :setlocal nowrap! nolist!<cr>
+
+" clear search results
+map <Leader><space> :noh<cr>
+
 " allow space to toggle folding
 noremap <Space> za
-
-" focus current fold from - https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc
-nnoremap <c-z> mzzMzvzz<c-e>
-
-" semicolon for command mode
-map ; :
-
-map <F8> :TagbarToggle<CR>
-map <leader>= :vertical resize 115
 
 " delete trailing whitespace
 map <leader>dtw :%s/\s\+$//e<cr>
 nmap <leader>d :ene<CR>:bd #<CR>
 
-" Custom PHP testing commands
-" TODO work into vim-tdd somehow
-map <leader>ub :!bin/behat %<cr>
-map <leader>bl ?Scenario<cr>:noh<cr>:exe "!bin/behat " . expand('%') . ":" . line('.')<cr>
-map <leader>bl :exe "!bin/behat "`~/.vim/bin/php-scenario-to-line % \`line('.')\``"<cr>
+" focus current fold from - https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc
+nnoremap <c-z> mzzMzvzz<c-e>
 
+" tagbar
+map <F8> :TagbarToggle<CR>
+
+" resize panes
+map <leader>= :vertical resize 115
 
 " }}}
+" }}}
 " Plugin configs {{{ ----------------------------------------------------------
+" >> Misc {{{
 
-" SudoEdit
+" Toggle values
+nmap - :Switch<cr>
+
+" Sudo write
 cnoremap w!! w !sudo tee % >/dev/null
 
-" PHPCtags
-if executable($HOME . "/myconfig/phpctags/phpctags")
-    let g:tagbar_phpctags_bin=$HOME.'/myconfig/phpctags/phpctags'
-endif
+" }}}
+" >> vim-tdd {{{
 
-" tdd
 let g:tdd_fail_command = 'bp'
 
-" fugitive (git)
+let g:tdd_php_mapper = '~/.vim/bin/php-file-to-test'
+function! DetectPHPTest(file)
+    return system(g:tdd_php_mapper . ' ' . a:file)
+endfunction
+
+" }}}
+" >> fugitive (git) {{{
+
 nmap <Leader>gs :Gstatus<cr>
 nmap <Leader>gd :Gdiff<cr>
 nmap <Leader>gg :Ggrep
@@ -360,11 +377,15 @@ nmap <Leader>gta :Gread<cr>:w<cr>:bd<cr>:diffoff!<cr>
 " clean up all those buffers fugitive leaves behind
 nmap <Leader>gbd :bdelete fugitive://<C-A><cr>
 
-" shift arguments left/right
+" }}}
+" >> Sidebars {{{
+
 nnoremap <c-h> :SidewaysLeft<cr>
 nnoremap <c-l> :SidewaysRight<cr>
 
-" nerdtree
+" }}}
+" >> nerdtree {{{
+
 let g:NERDTreeWinSize=40
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowHidden=1
@@ -374,13 +395,15 @@ nmap <Leader>n :NERDTreeCWD<cr>
 nmap <Leader>nf :NERDTreeFind<cr>
 nmap <Leader>nc :NERDTreeClose<cr>
 
-nmap - :Switch<cr>
+" }}}
+" >> phpqa {{{
 
-" phpqa
 let g:phpqa_codecoverage_file = "$PWD/clover.xml"
 let g:phpqa_codesniffer_args = "--standard=Symfony2"
 
-" ctrlp
+" }}}
+" >> ctrlp {{{
+
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_custom_ignore = 'web/coverage/|cache/'
 let g:ctrlp_working_path_mode = 0
@@ -390,38 +413,39 @@ set wildignore+=*/coverage/*
 set wildignore+=*/cache/*
 nnoremap <C-O> :CtrlPBuffer<cr>
 
-" Powerline
+" }}}
+" >> Powerline {{{
+
 let g:Powerline_symbols = 'fancy'
 call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 
-" syntastic
+" }}}
+" >> syntastic {{{
+
 nmap <Leader>e :Errors<cr>
 let g:syntastic_phpcs_disable = 1
 let g:syntastic_phpmd_disable = 1
 
-" phpctags
-let g:tagbar_phpctags_bin = '~/.vim/bin/phpctags/phpctags'
+" }}}
+" >> phpctags {{{
 
-" Tabularize
+let g:tagbar_phpctags_bin = '~/.vim/bin/phpctags/phpctags'
+if executable($HOME . "/myconfig/phpctags/phpctags")
+    let g:tagbar_phpctags_bin=$HOME.'/myconfig/phpctags/phpctags'
+endif
+
+" }}}
+" >> Tabularize {{{
+
 nmap <Leader>a& :Tabularize /&<CR>
 vmap <Leader>a& :Tabularize /&<CR>
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:<CR> 
 
-
+" }}}
 " }}}
 " Custom functions and commands {{{ -------------------------------------------
-
-:autocmd FileType php noremap <leader>li :w!<CR>::!/usr/bin/env php -l %<CR>
-
-
-let g:tdd_php_mapper = '~/.vim/bin/php-file-to-test'
-function! DetectPHPTest(file)
-    return system(g:tdd_php_mapper . ' ' . a:file)
-endfunction
-
-map <C-n> :execute ':edit ' . ClassToFile()<cr>
 
 if filereadable(".vim.local")
     so .vim.local
