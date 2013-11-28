@@ -338,9 +338,6 @@ nnoremap <c-z> mzzMzvzz<c-e>
 " tagbar
 map <F8> :TagbarToggle<CR>
 
-" resize panes
-map <leader>= :vertical resize 115
-
 " }}}
 " }}}
 " Plugin configs {{{ ----------------------------------------------------------
