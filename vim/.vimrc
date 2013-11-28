@@ -140,6 +140,7 @@ autocmd BufWritePost *vimrc source $HOME/.vimrc
 
 " markers for config files
 autocmd BufRead *vimrc,*zshrc,*tmux.conf setlocal foldmethod=marker
+autocmd BufRead *vimrc setlocal foldlevel=0
 
 " jump to last known position when possible
 autocmd BufReadPost *
