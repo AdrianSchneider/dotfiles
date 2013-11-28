@@ -376,7 +376,7 @@ nmap <Leader>gta :Gread<cr>:w<cr>:bd<cr>:diffoff!<cr>
 nmap <Leader>gbd :bdelete fugitive://<C-A><cr>
 
 " }}}
-" >> Sidebars {{{
+" >> Sideways {{{
 
 nnoremap <c-h> :SidewaysLeft<cr>
 nnoremap <c-l> :SidewaysRight<cr>
