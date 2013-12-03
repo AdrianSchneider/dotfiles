@@ -329,8 +329,7 @@ map <Leader><space> :noh<cr>
 noremap <Space> za
 
 " delete trailing whitespace
-map <leader>dtw :%s/\s\+$//e<cr>
-nmap <leader>d :ene<CR>:bd #<CR>
+map <leader>d :%s/\s\+$//e<cr>
 
 " focus current fold from - https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc
 nnoremap <c-z> mzzMzvzz<c-e>
