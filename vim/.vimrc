@@ -337,6 +337,10 @@ nnoremap <c-z> mzzMzvzz<c-e>
 " tagbar
 map <F8> :TagbarToggle<CR>
 
+" Toggle folding
+nmap <leader>fe :set foldenable<cr>
+nmap <leader>fd :set nofoldenable<cr>
+
 " }}}
 " }}}
 " Plugin configs {{{ ----------------------------------------------------------
