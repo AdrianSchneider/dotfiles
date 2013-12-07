@@ -9,6 +9,7 @@
       <property name="plugin-ids" type="array">
         <value type="int" value="1"/>
       </property>
+      <property name="autohide" type="bool" value="false"/>
     </property>
   </property>
   <property name="plugins" type="empty">
@@ -19,6 +20,7 @@
       <property name="flat-buttons" type="bool" value="false"/>
       <property name="rotate-vertically" type="bool" value="true"/>
       <property name="show-wireframes" type="bool" value="false"/>
+      <property name="show-only-minimized" type="bool" value="false"/>
     </property>
   </property>
 </channel>
