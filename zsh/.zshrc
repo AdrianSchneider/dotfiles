@@ -30,6 +30,10 @@ alias qi='qissues'
 alias cq='clear; qissues'
 alias qiswap='swap .qissues .qissues-secondary'
 
+function qic() {
+    qissues create -d "title=$1"
+}
+
 # }}}
 # ZSH Setup {{{
 
