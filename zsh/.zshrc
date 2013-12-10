@@ -4,7 +4,6 @@ alias composer='php composer.phar'
 alias copy='xclip -selection clipboard'
 alias paste='xclip -selection clipboard -o'
 alias vimt="vim '+TddTarget test:1.0'"
-alias bp='paplay /usr/share/sounds/KDE-Im-Message-In.ogg'
 alias bp='(paplay /usr/share/sounds/KDE-Im-Message-In.ogg &) &> /dev/null'
 alias ll='ls -alF'
 
