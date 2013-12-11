@@ -1,0 +1,3 @@
+#!/bin/sh
+pgrep rhythmbox > /dev/null && rhythmbox-client --play > /dev/null;
+

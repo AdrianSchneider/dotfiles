@@ -3,10 +3,11 @@
 alias copy='xclip -selection clipboard'
 alias paste='xclip -selection clipboard -o'
 alias vimt="vim '+TddTarget test:1.0'"
-alias bp='(paplay /usr/share/sounds/KDE-Im-Message-In.ogg &) &> /dev/null'
+alias bp='(playpause_beep &) &> /dev/null'
 alias ll='ls -alF'
 alias ginit='git init; git commit --allow-empty -m "initial commit";'
 alias make='nocorrect make'
+alias coverage='firefox coverage/index.html'
 
 # }}}
 # New Functions {{{
@@ -22,6 +23,13 @@ function swap() {
     mv "$1" $TMPFILE
     mv "$2" "$1"
     mv $TMPFILE "$2"
+}
+
+function playpause_beep() {
+    music-pause;
+    (paplay /usr/share/sounds/KDE-Im-Message-In.ogg &) &> /dev/null;
+    sleep 1;
+    music-play;
 }
 
 # }}}

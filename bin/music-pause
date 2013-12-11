@@ -1,0 +1,2 @@
+#!/bin/sh
+pgrep rhythmbox > /dev/null && rhythmbox-client --pause > /dev/null;
