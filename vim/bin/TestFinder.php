@@ -50,7 +50,7 @@ class TestFinder
     public function findClassToTest($testFile)
     {
         // src/Vendor/Tests/ClassName.php
-        $testPrefixes = array('test', 'tests', 'Tests');
+        $testPrefixes = array('tests', 'test', 'Tests');
         foreach ($testPrefixes as $prefix) {
             if (false !== $pos = strpos($testFile, "/$prefix/")) {
                 break;
@@ -66,7 +66,7 @@ class TestFinder
         }
 
         $testFile = substr($testFile, strpos($testFile, $start));
-        $sourceFile = str_replace(array('src/', 'test', 'tests', 'Tests/', 'Test.php'), array('', '', '', ''), $testFile);
+        $sourceFile = str_replace(array('src/', 'tests', 'test', 'Tests/', 'Test.php'), array('', '', '', ''), $testFile);
         $sourceClass = trim(str_replace(DIRECTORY_SEPARATOR, '\\', $sourceFile), '\\');
 
         return $sourceClass;
