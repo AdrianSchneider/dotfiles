@@ -1,11 +1,12 @@
 # Generic Aliases {{{
 
-alias composer='php composer.phar'
 alias copy='xclip -selection clipboard'
 alias paste='xclip -selection clipboard -o'
 alias vimt="vim '+TddTarget test:1.0'"
 alias bp='(paplay /usr/share/sounds/KDE-Im-Message-In.ogg &) &> /dev/null'
 alias ll='ls -alF'
+alias ginit='git init; git commit --allow-empty -m "initial commit";'
+alias make='nocorrect make'
 
 # }}}
 # New Functions {{{
