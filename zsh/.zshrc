@@ -7,7 +7,8 @@ alias bp='(playpause_beep &) &> /dev/null'
 alias ll='ls -alF'
 alias ginit='git init; git commit --allow-empty -m "initial commit";'
 alias make='nocorrect make'
-alias coverage='firefox coverage/index.html'
+alias ccff='make coverage; firefox coverage/index.html'
+alias sculp='nodemon -e ".php|.html|.md" -w app -w source --exec "sculpin generate --server"'
 
 # }}}
 # New Functions {{{
