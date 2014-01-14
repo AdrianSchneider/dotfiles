@@ -448,6 +448,14 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:<CR> 
 
 " }}}
+" >> switch {{{
+
+let g:switch_custom_definitions =
+    \ [
+    \   ['public', 'protected']
+    \ ]
+
+" }}}
 " }}}
 " Custom functions and commands {{{ -------------------------------------------
 
