@@ -7,6 +7,23 @@ snippet nclass
 	{
 		${1}
 	}
+snippet n_class
+	<?php
+
+	class `substitute(system('~/.vim/bin/php-52-class ' . expand("%")), '\\', '\\\\', 'g')`
+	{
+
+	}
+snippet t_class
+	<?php
+
+	class `substitute(system('~/.vim/bin/php-52-class ' . expand("%")), '\\', '\\\\', 'g')`  extends \PHPUnit_Framework_TestCase
+	{
+		public function test${1}()
+		{
+			${2}
+		}
+	}
 snippet ninterface
 	<?php
 

@@ -1,0 +1,7 @@
+#!/usr/bin/env php
+<?php
+
+include __DIR__ . '/TestFinder.php';
+$finder = new TestFinder();
+
+echo $finder->findXfTestFile($argv[1]);

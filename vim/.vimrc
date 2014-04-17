@@ -361,6 +361,9 @@ let g:tdd_php_mapper = '~/.vim/bin/php-file-to-test'
 function! DetectPHPTest(file)
     return system(g:tdd_php_mapper . ' ' . a:file)
 endfunction
+function! DetectXFTest(file)
+    return system('~/.vim/bin/php-xf-file-to-test ' . a:file)
+endfunction
 
 " }}}
 " >> fugitive (git) {{{

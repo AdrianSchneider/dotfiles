@@ -47,6 +47,26 @@ class TestFinder
         return implode(DIRECTORY_SEPARATOR, $out) . 'Test.php';
     }
 
+    public function findXfTestFile($inputFile)
+    {
+        if (strpos($inputFile, 'Test.php') !== false) {
+            return $inputFile;
+        }
+
+        $parts = explode('/', str_replace('.php', '', $inputFile));
+        $split = 'Recommendations';
+
+        $out = array();
+        foreach ($parts as $dir) {
+            $out[] = $dir;
+            if ($dir == $split) {
+                $out[] = 'Tests';
+            }
+        }
+
+        return implode(DIRECTORY_SEPARATOR, $out) . 'Test.php';
+    }
+
     public function findClassToTest($testFile)
     {
         // src/Vendor/Tests/ClassName.php
