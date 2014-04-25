@@ -170,6 +170,7 @@ autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 " >> filetype setup {{{
 
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig
+autocmd BufNewFile,BufRead *.hbs set syntax=html
 autocmd BufNewFile,BufRead *.less set syntax=css
 autocmd BufNewFile,BufRead *.less set filetype=less
 autocmd BufNewFile,BufRead .vim.local set filetype=vim
