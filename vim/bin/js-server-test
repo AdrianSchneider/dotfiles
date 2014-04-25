@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+
+$file = $argv[1];
+
+if (strpos($file, 'server/') !== false) {
+
+}
+
+echo $argv[1];
