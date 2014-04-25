@@ -33,6 +33,10 @@ function playpause_beep() {
     music-play;
 }
 
+function notify() {
+  terminal-notifier -title "Finished Task" -message "Long running task has finished"
+}
+
 # }}}
 # Qisues Shortcuts {{{
 
@@ -55,6 +59,7 @@ DISABLE_AUTO_TITLE="true"
 plugins=(git git-extras history node npm symfony2 tmux)
 
 source $ZSH/oh-my-zsh.sh
-export PATH=$PATH:./node_modules/.bin:/home/adrian/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export PATH=$PATH:./node_modules/.bin:/usr/local/bin:~/bin
+
 
 # }}}
