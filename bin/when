@@ -1,0 +1,28 @@
+#!/usr/bin/env php
+<?php
+
+$command = implode(' ', array_slice($argv, 1));
+
+if (run($command) == 0) {
+    notify('Success', $command);
+} else {
+    notify('FAIL', $command);
+}
+
+
+function run($command)
+{
+    $exitCode = 0;
+    system($command, $exitCode);
+    return $exitCode;
+}
+
+
+function notify($title, $message)
+{
+    shell_exec(sprintf(
+        'terminal-notifier -title %s -message %s', 
+        escapeshellarg($title), 
+        escapeshellarg($message)
+    ));
+}

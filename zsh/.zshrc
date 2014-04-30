@@ -33,8 +33,8 @@ function playpause_beep() {
     music-play;
 }
 
-function notify() {
-  terminal-notifier -title "Finished Task" -message "Long running task has finished"
+function notify(title, msg) {
+    terminal-notifier -title "$title" -message "$msg"
 }
 
 # }}}
