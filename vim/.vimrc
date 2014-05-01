@@ -421,7 +421,7 @@ nnoremap <C-O> :CtrlPBuffer<cr>
 " }}}
 " >> Powerline {{{
 
-let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'unicdoe'
 call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 
 " }}}
@@ -430,6 +430,7 @@ call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 nmap <Leader>e :Errors<cr>
 let g:syntastic_phpcs_disable = 1
 let g:syntastic_phpmd_disable = 1
+let g:syntastic_javascript_checkers = ['jslint']
 
 " }}}
 " >> phpctags {{{
