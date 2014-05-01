@@ -3,8 +3,13 @@
 
 $file = $argv[1];
 
-if (strpos($file, 'server/') !== false) {
-
+if (strpos($file, 'tests/') !== false) {
+    echo $file;
+    exit;
 }
 
-echo $argv[1];
+if (strpos($file, 'server/') !== false) {
+    $file = str_replace('server/', 'server/tests/unit/', str_replace('.js', '.spec.js', $file));
+}
+
+echo $file;
