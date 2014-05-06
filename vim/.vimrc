@@ -175,7 +175,9 @@ autocmd BufNewFile,BufRead *.less set syntax=css
 autocmd BufNewFile,BufRead *.less set filetype=less
 autocmd BufNewFile,BufRead .vim.local set filetype=vim
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig filetype=html.twig
+autocmd BufNewFile,BufRead *.tsv set filetype=tsv
 autocmd BufNewFile,Bufread qissues set syntax=yaml
+
 " }}
 
 " filetype from hashbang {{{
