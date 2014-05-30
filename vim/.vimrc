@@ -194,7 +194,7 @@ endif
 
 " }}}
 
-au BufRead,BufNewFile *.md set syntax=markdown
+au BufRead,BufNewFile *.md set syntax=markdown filetype=markdown
 autocmd BufNewFile,BufRead *.md execute "setf markdown"
 
 
