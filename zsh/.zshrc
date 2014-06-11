@@ -1,5 +1,6 @@
 # Generic Aliases {{{
 
+alias ~~='~/Projects'
 alias copy='xclip -selection clipboard'
 alias paste='xclip -selection clipboard -o'
 alias vimt="vim '+TddTarget test:1.0'"
