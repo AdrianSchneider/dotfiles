@@ -203,7 +203,7 @@ autocmd BufNewFile,BufRead *.md execute "setf markdown"
 " }}}
 " Custom highlighting  {{{ ----------------------------------------------------
 
-colorscheme wombat
+colorscheme wombat256
 highlight Normal ctermbg=None
 hi Folded ctermfg=216
 hi Folded ctermbg=None
