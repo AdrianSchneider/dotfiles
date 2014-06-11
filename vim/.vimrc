@@ -203,7 +203,7 @@ autocmd BufNewFile,BufRead *.md execute "setf markdown"
 " }}}
 " Custom highlighting  {{{ ----------------------------------------------------
 
-colorscheme wombat256
+colorscheme wombat
 highlight Normal ctermbg=None
 hi Folded ctermfg=216
 hi Folded ctermbg=None
@@ -423,7 +423,7 @@ nnoremap <C-O> :CtrlPBuffer<cr>
 " }}}
 " >> Powerline {{{
 
-let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'unicdoe'
 call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 
 " }}}
@@ -432,6 +432,7 @@ call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 nmap <Leader>e :Errors<cr>
 let g:syntastic_phpcs_disable = 1
 let g:syntastic_phpmd_disable = 1
+let g:syntastic_javascript_checkers = ['jslint']
 
 " }}}
 " >> phpctags {{{
@@ -449,6 +450,7 @@ vmap <Leader>a& :Tabularize /&<CR>
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:<CR> 
+vmap <Leader>a: :Tabularize /:<CR> 
 
 " }}}
 " >> switch {{{
