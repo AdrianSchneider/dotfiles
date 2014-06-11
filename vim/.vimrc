@@ -203,7 +203,7 @@ autocmd BufNewFile,BufRead *.md execute "setf markdown"
 " }}}
 " Custom highlighting  {{{ ----------------------------------------------------
 
-colorscheme wombat
+colorscheme wombat256
 highlight Normal ctermbg=None
 hi Folded ctermfg=216
 hi Folded ctermbg=None
@@ -396,7 +396,7 @@ nnoremap <c-l> :SidewaysRight<cr>
 let g:NERDTreeWinSize=40
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowHidden=1
-let g:NERDTreeIgnore=['\.git$']
+let g:NERDTreeIgnore=['\.git$', '\.class$']
 
 nmap <Leader>n :NERDTreeCWD<cr>
 nmap <Leader>nf :NERDTreeFind<cr>
@@ -415,7 +415,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_custom_ignore = 'web/coverage/|cache/'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 1
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.class
 set wildignore+=*/coverage/*
 set wildignore+=*/cache/*
 nnoremap <C-O> :CtrlPBuffer<cr>
