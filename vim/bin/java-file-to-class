@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php
+
+$replacements = [
+    'src/main/java/' => '',
+    'src/test/java/' => '',
+    '.java'          => '',
+    '/'              => '.'
+];
+
+echo str_replace(array_keys($replacements), array_values($replacements), $argv[1]);

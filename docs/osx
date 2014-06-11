@@ -1,0 +1,4 @@
+brew install terminal-notifier
+brew install gh
+brew install wget
+brew install ssh-copy-id

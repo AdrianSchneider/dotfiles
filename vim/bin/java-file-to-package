@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+$replacements = [
+    'src/main/java/' => '',
+    'src/test/java/' => '',
+    '/'              => '.',
+    'Test.java'      => ''
+];
+
+if (!empty($argv[2])) {
+    echo str_replace(array_keys($replacements), array_values($replacements), $argv[1]);
+} else {
+    echo str_replace(array_keys($replacements), array_values($replacements), dirname($argv[1]));
+}

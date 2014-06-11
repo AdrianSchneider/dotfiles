@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+$filename = str_replace('.java', '', $argv[1]);
+$filename = str_replace('src/main/java', 'src/test/java', $filename);
+
+if (strpos($filename, 'Test') === false) {
+    $filename .= 'Test';
+}
+
+if (strpos($filename, '.java') === false) {
+    $filename .= '.java';
+}
+
+echo $filename;
