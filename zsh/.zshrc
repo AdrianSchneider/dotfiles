@@ -61,7 +61,10 @@ plugins=(git git-extras history node npm symfony2 tmux)
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/usr/local/sbin:./node_modules/.bin:/usr/local/bin:~/bin
-export CLASSPATH="~/Applications/Java/Extensions/*:."
+
+ulimit -n 1000
+
+source ./tmux-sessions
 
 
 # }}}

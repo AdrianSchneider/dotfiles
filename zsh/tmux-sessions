@@ -1,0 +1,40 @@
+#!/bin/bash
+
+tmux-fg() {
+    local FG='/Users/adrian/Projects/freshgrade/app'
+
+    if [ $(tmux ls | grep fg) ]; then
+        exit 0
+    fi
+
+    TMUX= tmux new-session -s fg -d
+    tmux new-window -t fg -c $FG -n zsh
+    tmux new-window -t fg -c $FG -n server
+    tmux new-window -t fg -c $FG -n mongo
+
+    # 1: Vim
+    tmux send-keys -t fg:1 "cd $FG" Enter
+    tmux send-keys -t fg:1 "vim" Enter
+
+    # 2: Zsh + Background Services
+    tmux split-window -t fg:2
+    tmux split-window -t fg:2.0 -h
+    tmux send-keys -t fg:2.0 "cd $FG; clear" Enter
+    tmux send-keys -t fg:2.0 "grunt browserify:teacher --watchify" Enter
+    tmux send-keys -t fg:2.1 "cd $FG" Enter
+    tmux send-keys -t fg:2.2 "cd $FG" Enter
+    tmux send-keys -t fg:2.2 'fswatch client/stylesheets "grunt sass:teacher; grunt autoprefixer:teacher"' Enter
+
+    # 3: Servers
+    tmux split-window -t fg:3 -h
+    tmux send-keys -t fg:3.0 "cd $FG" Enter
+    tmux send-keys -t fg:3.0 "pkill mongod" Enter
+    tmux send-keys -t fg:3.0 "mongod --dbpath=/Users/adrian/Applications/Mongo/data" Enter
+    tmux send-keys -t fg:3.1 "cd $FG" Enter
+    tmux send-keys -t fg:3.1 "nodemon -w server server" Enter
+
+    # 4: Mongo Client
+    tmux send-keys -t fg:4 "cd $FG" Enter
+    tmux send-keys -t fg:4 "sleep 5" Enter
+    tmux send-keys -t fg:4 "mongo freshgrade-dev" Enter
+}
