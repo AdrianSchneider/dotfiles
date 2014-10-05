@@ -57,12 +57,15 @@ ZSH_THEME="adrian"
 
 DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
+unsetopt histverify
+
 plugins=(git git-extras history node npm symfony2 tmux)
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/usr/local/sbin:./node_modules/.bin:/usr/local/bin:~/bin
 
 ulimit -n 1000
+unsetopt histverify
 
 source ./tmux-sessions
 
