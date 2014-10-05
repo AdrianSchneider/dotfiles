@@ -426,7 +426,7 @@ nnoremap <C-O> :CtrlPBuffer<cr>
 " }}}
 " >> Powerline {{{
 
-let g:Powerline_symbols = 'unicdoe'
+let g:Powerline_symbols = 'unicode'
 call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 
 " }}}
