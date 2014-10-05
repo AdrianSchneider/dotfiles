@@ -58,6 +58,9 @@ Bundle 'airblade/vim-gitgutter'
 " Commenting hotkeys
 Bundle 'scrooloose/nerdcommenter'
 
+" Line number toggling
+Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+
 " Automatically reload browser on save
 Bundle 'AdrianSchneider/vim-browser-reload-linux'
 
