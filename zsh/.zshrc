@@ -38,6 +38,10 @@ function notify() {
   terminal-notifier -title "Finished Task" -message "Long running task has finished"
 }
 
+function attach() {
+  TMUX= tmux switch -t $1 || tmuxp load $1.yaml -y
+}
+
 # }}}
 # Qisues Shortcuts {{{
 
