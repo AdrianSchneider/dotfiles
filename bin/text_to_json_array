@@ -1,0 +1,6 @@
+#!/bin/bash
+while read line; do
+    echo "$line" | sed 's/"/\\\\"/g' | while read escapedline; do
+        echo -e "\"$escapedline\""
+    done
+done | jq -s .
