@@ -1,15 +1,15 @@
 # Generic Aliases {{{
 
-alias ~~='~/Projects'
-alias copy='xclip -selection clipboard'
-alias paste='xclip -selection clipboard -o'
+alias copy='pbcopy'
+alias paste='pbpaste'
 alias vimt="vim '+TddTarget test:1.0'"
-alias bp='(playpause_beep &) &> /dev/null'
+alias bp='say beep'
 alias ll='ls -alF'
-alias ginit='git init; git commit --allow-empty -m "initial commit";'
 alias make='nocorrect make'
-alias ccff='make coverage; firefox coverage/index.html'
-alias sculp='nodemon -e ".php|.html|.md" -w app -w source --exec "sculpin generate --server"'
+alias when='nocorrect when'
+alias ssh='nocorrect ssh'
+alias git='nocorrect git'
+alias ccff='make coverage; open coverage/index.html'
 
 # }}}
 # ZSH Setup {{{
