@@ -1,0 +1,9 @@
+#!/bin/bash
+# Finds all modified files since upstream
+set -e
+upstream=$(git_upstream_branch)
+cat \
+    <(git diff --name-only "$upstream") \
+    <(git status --porcelain | awk '{print $2}') \
+  | sort -u
+

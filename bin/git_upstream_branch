@@ -1,0 +1,2 @@
+#!/bin/sh
+git lg | grep -o "upstream/[-a-zA-Z0-9]*" | head -1 | cut -d "/" -f 2
