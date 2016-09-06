@@ -1,0 +1,15 @@
+tell application "iTerm"
+    select first terminal
+
+
+#    repeat with term in terminals
+#        tell term
+#            select term
+#            repeat with mysession in sessions
+#                tell mysession
+#                    select 
+#                end tell
+#            end repeat
+#        end tell
+#    end repeat
+end tell
