@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+'use strict';
+
+/**
+ * Basic file mapper to find unit tests for a given source file
+ */
+var file = process.argv[2].split('\n')[0];
+
+if(file.indexOf('tests') === 0) {
+  process.stdout.write(file);
+  process.exit(0);
+}
+
+process.stdout.write(
+  file
+    .replace('src/', 'tests/unit/')
+    .replace('.js', '.spec.js')
+);
+
