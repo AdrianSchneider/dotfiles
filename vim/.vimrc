@@ -2,6 +2,8 @@
 
 " Initial Setup {{{ -----------------------------------------------------------
 
+" oops
+let g:tdd_tdd_pipe=''
 set nocompatible
 autocmd!
 filetype off
@@ -126,6 +128,10 @@ Bundle 'leshill/vim-json'
 
 " LESS (css) support
 Bundle 'groenewege/vim-less'
+
+" Java Maven
+Bundle 'mikelue/vim-maven-plugin'
+
 " }}}
 " >> Miscellaneous {{{
 
@@ -177,6 +183,7 @@ autocmd BufNewFile,BufRead *.hbs set syntax=html
 autocmd BufNewFile,BufRead *.less set syntax=css
 autocmd BufNewFile,BufRead *.less set filetype=less
 autocmd BufNewFile,BufRead .vim.local set filetype=vim
+autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig filetype=html.twig
 autocmd BufNewFile,BufRead *.tsv set filetype=tsv
 autocmd BufNewFile,Bufread qissues set syntax=yaml
@@ -415,6 +422,7 @@ let g:phpqa_codesniffer_args = "--standard=Symfony2"
 " >> ctrlp {{{
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'web/coverage/|cache/'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 1
@@ -435,7 +443,7 @@ call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 nmap <Leader>e :Errors<cr>
 let g:syntastic_phpcs_disable = 1
 let g:syntastic_phpmd_disable = 1
-let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_javascript_checkers = ['jshint']
 
 " }}}
 " >> phpctags {{{
@@ -470,3 +478,6 @@ let g:switch_custom_definitions =
 if filereadable(".vim.local")
     so .vim.local
 endif
+
+
+

@@ -3,9 +3,13 @@
 
 $file = $argv[1];
 
-if (strpos($file, 'tests/') !== false) {
+if (strpos($file, '.spec.js') !== false) {
     echo $file;
     exit;
+}
+
+if (strpos($file, 'migrations') === 0) {
+    $file = str_replace('migrations/', 'server/migrations/', $file);
 }
 
 if (strpos($file, 'server/') !== false) {
