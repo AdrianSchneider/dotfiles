@@ -1,3 +1,6 @@
+unalias gcl 2> /dev/null
+unalias gco 2> /dev/null
+
 # Pushes this up to origin, and sets the local branch tracking
 # Then creates a pull request against this branch's upstream branch (parent branch)
 function pr() {
