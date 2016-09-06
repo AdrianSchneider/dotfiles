@@ -43,17 +43,6 @@ function attach() {
 }
 
 # }}}
-# Qisues Shortcuts {{{
-
-alias qi='qissues'
-alias cq='clear; qissues'
-alias qiswap='swap .qissues .qissues-secondary'
-
-function qic() {
-    qissues create -d "title=$1"
-}
-
-# }}}
 # ZSH Setup {{{
 
 ZSH=$HOME/.oh-my-zsh
@@ -68,14 +57,35 @@ plugins=(git git-extras history node npm symfony2 tmux)
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/usr/local/sbin:./node_modules/.bin:/usr/local/bin:~/bin
 
+# Load custom scripts
 for file in ~/dotfiles/src/*; do
   source "$file"
 done
 
+# }}}
+# Vim Mode {{{
+
+bindkey -v
+export KEYTIMEOUT=1
+# Use vim cli mode
+bindkey '^P' up-history
+bindkey '^N' down-history
+
+# backspace and ^h working even after
+# returning from command mode
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+
+# ctrl-w removed word backwards
+bindkey '^w' backward-kill-word
+
+# ctrl-r starts searching history backward
+bindkey '^r' history-incremental-search-backward
+
+# }}}
+# System settings {{{
+
 ulimit -n 1000
 unsetopt histverify
-
-source ./tmux-sessions
-
 
 # }}}
