@@ -1,9 +1,10 @@
 
 
+
 " Initial Setup {{{ -----------------------------------------------------------
 
 " oops
-let g:tdd_tdd_pipe=''
+let g:tdd_pipe=''
 set nocompatible
 autocmd!
 filetype off
@@ -16,7 +17,7 @@ Bundle 'gmarik/vundle'
 filetype plugin indent on
 syntax on
 
-set term=xterm-256color
+"set term=xterm-256color
 
 " Set titlestring when switching buffers
 autocmd BufEnter * let &titlestring = expand("%:t")
@@ -59,9 +60,6 @@ Bundle 'airblade/vim-gitgutter'
 
 " Commenting hotkeys
 Bundle 'scrooloose/nerdcommenter'
-
-" Line number toggling
-Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Automatically reload browser on save
 Bundle 'AdrianSchneider/vim-browser-reload-linux'
@@ -132,6 +130,9 @@ Bundle 'groenewege/vim-less'
 " Java Maven
 Bundle 'mikelue/vim-maven-plugin'
 
+" Handlebars
+Plugin 'mustache/vim-mustache-handlebars'
+
 " }}}
 " >> Miscellaneous {{{
 
@@ -179,14 +180,15 @@ autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 " >> filetype setup {{{
 
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig
-autocmd BufNewFile,BufRead *.hbs set syntax=html
+autocmd BufNewFile,BufRead *.hbs set filetype=mustache
 autocmd BufNewFile,BufRead *.less set syntax=css
 autocmd BufNewFile,BufRead *.less set filetype=less
 autocmd BufNewFile,BufRead .vim.local set filetype=vim
-autocmd BufNewFile,BufRead *.json set filetype=javascript
+autocmd BufNewFile,BufRead *.xml.j2 set filetype=xml
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig filetype=html.twig
 autocmd BufNewFile,BufRead *.tsv set filetype=tsv
 autocmd BufNewFile,Bufread qissues set syntax=yaml
+autocmd BufNewFile,Bufread qissues* set syntax=yaml
 
 " }}
 
@@ -213,7 +215,7 @@ autocmd BufNewFile,BufRead *.md execute "setf markdown"
 " }}}
 " Custom highlighting  {{{ ----------------------------------------------------
 
-colorscheme wombat256
+colorscheme wombat
 highlight Normal ctermbg=None
 hi Folded ctermfg=216
 hi Folded ctermbg=None
@@ -326,6 +328,10 @@ cnoreabbrev Q q
 cnoreabbrev Qall qall
 cnoreabbrev Vs vs
 
+iabbrev conosle console
+iabbrev clog console.log
+iabbrev clg console.log
+
 " }}}
 " >> new mappings {{{
 
@@ -353,6 +359,9 @@ map <F8> :TagbarToggle<CR>
 " Toggle folding
 nmap <leader>fe :set foldenable<cr>
 nmap <leader>fd :set nofoldenable<cr>
+
+nmap <leader>! tdd#tmux#send('!!')<cr>
+nmap <leader>C tdd#tmux#send('C-c')<cr>
 
 " }}}
 " }}}
@@ -425,7 +434,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'web/coverage/|cache/'
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_by_filename = 1
+let g:ctrlp_by_filename = 0
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.class
 set wildignore+=*/coverage/*
 set wildignore+=*/cache/*
@@ -460,8 +469,9 @@ nmap <Leader>a& :Tabularize /&<CR>
 vmap <Leader>a& :Tabularize /&<CR>
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:<CR> 
-vmap <Leader>a: :Tabularize /:<CR> 
+nnoremap <Leader>a: :Tabularize /:<CR> 
+vnoremap <Leader>a: :Tabularize /:<CR> 
+"vnoremap <Leader>a| :Tabularize /|/<CR>
 
 " }}}
 " >> switch {{{
@@ -479,5 +489,14 @@ if filereadable(".vim.local")
     so .vim.local
 endif
 
+function! EditUpstreamChanges()
+    execute "args " . system('git_upstream_changes | xargs')
+endfunction
+
+nmap <leader>fh :w! ~/Pipes/http<cr>
+vmap <leader>vh :w! ~/Pipes/http<cr>
+nmap <leader>fq :w! ~/Pipes/query<cr>
+vmap <leader>vq y:new /tmp/vimbuf<CR>VGp:x<CR>
+nmap <leader>gu :call EditUpstreamChanges()<CR>
 
 
