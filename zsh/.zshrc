@@ -68,10 +68,9 @@ plugins=(git git-extras history node npm symfony2 tmux)
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/usr/local/sbin:./node_modules/.bin:/usr/local/bin:~/bin
 
-unalias gco
-unalias gcl
-source ~/dotfiles/src/logs.zsh
-source ~/dotfiles/src/git.zsh
+for file in ~/dotfiles/src/*; do
+  source "$file"
+done
 
 ulimit -n 1000
 unsetopt histverify
