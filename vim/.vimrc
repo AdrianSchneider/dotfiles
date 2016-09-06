@@ -108,6 +108,10 @@ Bundle 'AndrewRadev/splitjoin.vim'
 
 " }}}
 " >> Language Specific {{{
+"
+Bundle 'tpope/vim-classpath'
+
+Bundle 'leafgarland/typescript-vim'
 
 " Twig Support
 Bundle 'beyondwords/vim-twig'
@@ -121,11 +125,16 @@ Bundle 'techlivezheng/tagbar-phpctags'
 " Javascript support
 Bundle 'AdrianSchneider/vim-javascript'
 
+" Node.js enhancements
+Bundle 'moll/vim-node'
+
 " JSON Support
 Bundle 'leshill/vim-json'
 
 " LESS (css) support
 Bundle 'groenewege/vim-less'
+
+Bundle 'elixir-lang/vim-elixir'
 
 " Java Maven
 Bundle 'mikelue/vim-maven-plugin'
@@ -183,26 +192,19 @@ autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig
 autocmd BufNewFile,BufRead *.hbs set filetype=mustache
 autocmd BufNewFile,BufRead *.less set syntax=css
 autocmd BufNewFile,BufRead *.less set filetype=less
+autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd BufNewFile,BufRead .vim.local set filetype=vim
 autocmd BufNewFile,BufRead *.xml.j2 set filetype=xml
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig filetype=html.twig
 autocmd BufNewFile,BufRead *.tsv set filetype=tsv
 autocmd BufNewFile,Bufread qissues set syntax=yaml
-autocmd BufNewFile,Bufread qissues* set syntax=yaml
+autocmd BufNewFile,Bufread qissues.* set syntax=yaml
+autocmd BufNewFile,Bufread *.exs set syntax=elixir
+autocmd BufNewFile,Bufread *.ex set syntax=elixir
 
 " }}
 
 " filetype from hashbang {{{
-
-if getline(1) =~# '^#!.*/bin/env\s\+python\>'
-    setfiletype python
-endif
-if getline(1) =~# '^#!.*/bin/env\s\+php\>'
-    setfiletype php
-endif
-if getline(1) =~# '^#!.*/bin/env\s\+node\>'
-    setfiletype javascript
-endif
 
 " }}}
 
@@ -215,7 +217,7 @@ autocmd BufNewFile,BufRead *.md execute "setf markdown"
 " }}}
 " Custom highlighting  {{{ ----------------------------------------------------
 
-colorscheme wombat
+colorscheme wombat256
 highlight Normal ctermbg=None
 hi Folded ctermfg=216
 hi Folded ctermbg=None
@@ -273,9 +275,14 @@ set sidescrolloff=2
 
 set completeopt=longest,menuone
 
+if has('nvim')
+    set ttimeout
+    set ttimeoutlen=0
+endif
+
 if has("wildmenu")
     set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.git
-    set wildignore+=*~,*.swp,*.tmp,.DS_Store
+    set wildignore+=*~,*.swp,*.tmp,.DS_Store,coverage
     set wildmenu
     set wildmode=longest,list
 endif
@@ -322,6 +329,8 @@ map <right> <nop>
 
 " }}}
 " >> abbreviations {{{
+
+ab nul null
 
 cnoreabbrev W w
 cnoreabbrev Q q

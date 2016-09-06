@@ -1,0 +1,2 @@
+#!/bin/bash
+while ! echo exit | nc localhost $1; do sleep 1; done
