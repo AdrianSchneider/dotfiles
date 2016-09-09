@@ -123,7 +123,7 @@ Bundle 'arnaud-lb/vim-php-namespace'
 Bundle 'techlivezheng/tagbar-phpctags'
 
 " Javascript support
-Bundle 'AdrianSchneider/vim-javascript'
+Bundle 'pangloss/vim-javascript'
 
 " Node.js enhancements
 Bundle 'moll/vim-node'
