@@ -57,4 +57,7 @@ bindkey '^r' history-incremental-search-backward
 ulimit -n 1000
 unsetopt histverify
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
 # }}}
