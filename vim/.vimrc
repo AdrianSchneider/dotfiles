@@ -125,6 +125,9 @@ Bundle 'techlivezheng/tagbar-phpctags'
 " Javascript support
 Bundle 'pangloss/vim-javascript'
 
+" Python support
+Bundle 'hdima/python-syntax'
+
 " Node.js enhancements
 Bundle 'moll/vim-node'
 
