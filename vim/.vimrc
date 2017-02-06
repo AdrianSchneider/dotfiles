@@ -510,7 +510,7 @@ vmap <Leader>af :Tabularize /from/<CR>
 
 let g:switch_custom_definitions =
     \ [
-    \   ['public', 'protected']
+    \   ['public', 'protected', 'private']
     \ ]
 
 " }}}
