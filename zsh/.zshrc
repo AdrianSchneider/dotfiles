@@ -23,8 +23,10 @@ unsetopt histverify
 
 plugins=(git git-extras history node npm symfony2 tmux)
 
-source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/usr/local/sbin:./node_modules/.bin:/usr/local/bin:~/bin
+export JAVA_HOME=$(/usr/libexec/java_home)
+source $ZSH/oh-my-zsh.sh
+export EDITOR=/usr/local/bin/vim
 
 # Load custom scripts
 for file in ~/dotfiles/src/*; do

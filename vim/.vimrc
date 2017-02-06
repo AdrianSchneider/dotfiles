@@ -61,6 +61,9 @@ Bundle 'airblade/vim-gitgutter'
 " Commenting hotkeys
 Bundle 'scrooloose/nerdcommenter'
 
+" Tab autocomplete
+Bundle 'Valloric/YouCompleteMe'
+
 " Automatically reload browser on save
 Bundle 'AdrianSchneider/vim-browser-reload-linux'
 
@@ -108,7 +111,9 @@ Bundle 'AndrewRadev/splitjoin.vim'
 
 " }}}
 " >> Language Specific {{{
-"
+
+" Java
+Bundle 'artur-shaik/vim-javacomplete2'
 Bundle 'tpope/vim-classpath'
 
 Bundle 'leafgarland/typescript-vim'
@@ -187,6 +192,8 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
 
 " }}}
 " >> filetype setup {{{
