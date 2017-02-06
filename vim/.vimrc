@@ -213,8 +213,8 @@ autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig filetype=html.twig
 autocmd BufNewFile,BufRead *.tsv set filetype=tsv
 autocmd BufNewFile,Bufread qissues set syntax=yaml
 autocmd BufNewFile,Bufread qissues.* set syntax=yaml
-autocmd BufNewFile,Bufread *.exs set syntax=elixir
-autocmd BufNewFile,Bufread *.ex set syntax=elixir
+autocmd BufNewFile,Bufread *.exs set syntax=elixir filetype=elixir
+autocmd BufNewFile,Bufread *.ex set syntax=elixir filetype=elixir
 
 " }}
 
