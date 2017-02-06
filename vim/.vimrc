@@ -116,7 +116,10 @@ Bundle 'AndrewRadev/splitjoin.vim'
 Bundle 'artur-shaik/vim-javacomplete2'
 Bundle 'tpope/vim-classpath'
 
+" typescript
+Bundle 'Quramy/tsuquyomi'
 Bundle 'leafgarland/typescript-vim'
+Bundle 'Shougo/vimproc.vim'
 
 " Twig Support
 Bundle 'beyondwords/vim-twig'
@@ -143,6 +146,7 @@ Bundle 'leshill/vim-json'
 Bundle 'groenewege/vim-less'
 
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'slashmili/alchemist.vim'
 
 " Java Maven
 Bundle 'mikelue/vim-maven-plugin'
@@ -472,6 +476,8 @@ nmap <Leader>e :Errors<cr>
 let g:syntastic_phpcs_disable = 1
 let g:syntastic_phpmd_disable = 1
 let g:syntastic_javascript_checkers = ['jshint']
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
 " }}}
 " >> phpctags {{{
@@ -480,6 +486,11 @@ let g:tagbar_phpctags_bin = '~/.vim/bin/phpctags/phpctags'
 if executable($HOME . "/myconfig/phpctags/phpctags")
     let g:tagbar_phpctags_bin=$HOME.'/myconfig/phpctags/phpctags'
 endif
+
+" }}}
+" >> tsuquyomi (typescript) {{
+
+let g:tsuquyomi_shortest_import_path = 1
 
 " }}}
 " >> Tabularize {{{
