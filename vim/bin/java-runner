@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+function map_file() {
+  local file="$1"
+  ~/.vim/bin/java-mapper fileToClass "$file"
+}
+
+function run_test() {
+  local className="$1"
+  mvn surefire:test -Dtest="$className" -DfailIfNoTests=false
+}
+
+function main() {
+  local file="$1"
+  run_test "$(map_file "$file")"
+}
+
+main "$@"

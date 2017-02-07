@@ -43,8 +43,8 @@ Bundle 'fugitive.vim'
 " Ack integration
 Bundle 'mileszs/ack.vim'
 
-" Better snippets
-Bundle 'msanders/snipmate.vim'
+" Snippets
+Plugin 'SirVer/ultisnips'
 
 " Syntax checkers for various languages
 Bundle 'scrooloose/syntastic'
@@ -530,5 +530,10 @@ vmap <leader>vh :w! ~/Pipes/http<cr>
 nmap <leader>fq :w! ~/Pipes/query<cr>
 vmap <leader>vq y:new /tmp/vimbuf<CR>VGp:x<CR>
 nmap <leader>gu :call EditUpstreamChanges()<CR>
+"
+"" Ultisnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 
