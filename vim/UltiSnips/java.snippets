@@ -2,7 +2,7 @@ snippet nclass "new class with package and names filled in"
 package `!v system('~/.vim/bin/java-mapper fileToPackage ' . expand('%'))`;
 
 public class `!v system('~/.vim/bin/java-mapper fileToJustClassName ' . expand('%'))` {
-    $1
+    ${0}
 }
 endsnippet
 
@@ -17,6 +17,9 @@ import org.junit.Assert;
 import `!v system('~/.vim/bin/java-mapper testFileToSourceClass ' . expand('%'))`;
 
 public class `!v system('~/.vim/bin/java-mapper fileToJustClassName ' . expand('%'))` {
-    ${1}
+    @Test
+    public void test${1}() {
+        ${0}
+    }
 }
 endsnippet

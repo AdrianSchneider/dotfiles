@@ -5,3 +5,6 @@ fun! s:DetectNode()
 endfun
 
 autocmd BufNewFile,BufRead * call s:DetectNode()
+
+set tabstop=2
+set shiftwidth=2
