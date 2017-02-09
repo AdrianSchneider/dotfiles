@@ -23,10 +23,9 @@ unsetopt histverify
 
 plugins=(git git-extras history node npm symfony2 tmux docker)
 
-export PATH=$PATH:/usr/local/sbin:./node_modules/.bin:/usr/local/bin:~/bin
-export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin
+
 source $ZSH/oh-my-zsh.sh
-export EDITOR=/usr/local/bin/vim
 
 # Load custom scripts
 for file in ~/dotfiles/src/*; do
@@ -59,7 +58,19 @@ bindkey '^r' history-incremental-search-backward
 ulimit -n 1000
 unsetopt histverify
 
+# Include ~/bin in path
+export PATH=$PATH:~/bin
+export EDITOR=/usr/local/bin/vim
+
+# }}}
+# Language Runtime Setup {{{
+
+# node.js
+export PATH="$PATH:./node_modules/.bin"
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# java
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # }}}
