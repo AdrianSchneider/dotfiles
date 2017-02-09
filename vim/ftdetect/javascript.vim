@@ -1,3 +1,4 @@
+" Detect javascript when its in the shebang
 fun! s:DetectNode()
     if getline(1) == '#!/usr/bin/env node'
         set ft=javascript
@@ -5,6 +6,3 @@ fun! s:DetectNode()
 endfun
 
 autocmd BufNewFile,BufRead * call s:DetectNode()
-
-set tabstop=2
-set shiftwidth=2
