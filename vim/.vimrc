@@ -488,7 +488,7 @@ if executable($HOME . "/myconfig/phpctags/phpctags")
 endif
 
 " }}}
-" >> tsuquyomi (typescript) {{
+" >> tsuquyomi (typescript) {{{
 
 let g:tsuquyomi_shortest_import_path = 1
 
