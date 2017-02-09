@@ -21,7 +21,7 @@ DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
 unsetopt histverify
 
-plugins=(git git-extras history node npm symfony2 tmux)
+plugins=(git git-extras history node npm symfony2 tmux docker)
 
 export PATH=$PATH:/usr/local/sbin:./node_modules/.bin:/usr/local/bin:~/bin
 export JAVA_HOME=$(/usr/libexec/java_home)
