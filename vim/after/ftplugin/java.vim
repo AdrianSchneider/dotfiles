@@ -1,6 +1,7 @@
 " Settings
 set foldmethod=syntax
 set foldlevel=1
+set wildignore+=*/target/*
 
 " TDD Setup
 nmap T :call tdd#tmux#send('mvn test')<CR>
