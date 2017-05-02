@@ -4,4 +4,6 @@ fun! s:DetectNode()
     endif
 endfun
 
+let g:tdd_test_command = './node_modules/.bin/mocha -t 3000'
+
 autocmd BufNewFile,BufRead * call s:DetectNode()

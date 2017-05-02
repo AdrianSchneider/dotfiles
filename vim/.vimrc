@@ -64,6 +64,9 @@ Bundle 'scrooloose/nerdcommenter'
 " Automatically reload browser on save
 Bundle 'AdrianSchneider/vim-browser-reload-linux'
 
+" Autocomplete
+Bundle 'Valloric/YouCompleteMe'
+
 " TDD plugins: open test in split, run tests on save, etc.
 Bundle 'AdrianSchneider/vim-tdd'
 
@@ -139,6 +142,9 @@ Bundle 'elixir-lang/vim-elixir'
 " Java Maven
 Bundle 'mikelue/vim-maven-plugin'
 
+" Java Autocomplete
+Plugin 'artur-shaik/vim-javacomplete2'
+
 " Handlebars
 Plugin 'mustache/vim-mustache-handlebars'
 
@@ -184,6 +190,8 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
 
 " }}}
 " >> filetype setup {{{
