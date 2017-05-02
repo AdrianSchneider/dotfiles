@@ -43,8 +43,8 @@ Bundle 'fugitive.vim'
 " Ack integration
 Bundle 'mileszs/ack.vim'
 
-" Better snippets
-Bundle 'msanders/snipmate.vim'
+" Snippets
+Plugin 'SirVer/ultisnips'
 
 " Syntax checkers for various languages
 Bundle 'scrooloose/syntastic'
@@ -60,6 +60,9 @@ Bundle 'airblade/vim-gitgutter'
 
 " Commenting hotkeys
 Bundle 'scrooloose/nerdcommenter'
+
+" Tab autocomplete
+Bundle 'Valloric/YouCompleteMe'
 
 " Automatically reload browser on save
 Bundle 'AdrianSchneider/vim-browser-reload-linux'
@@ -111,10 +114,15 @@ Bundle 'AndrewRadev/splitjoin.vim'
 
 " }}}
 " >> Language Specific {{{
-"
+
+" Java
+Bundle 'artur-shaik/vim-javacomplete2'
 Bundle 'tpope/vim-classpath'
 
+" typescript
+Bundle 'Quramy/tsuquyomi'
 Bundle 'leafgarland/typescript-vim'
+Bundle 'Shougo/vimproc.vim'
 
 " Twig Support
 Bundle 'beyondwords/vim-twig'
@@ -128,6 +136,9 @@ Bundle 'techlivezheng/tagbar-phpctags'
 " Javascript support
 Bundle 'pangloss/vim-javascript'
 
+" Python support
+Bundle 'hdima/python-syntax'
+
 " Node.js enhancements
 Bundle 'moll/vim-node'
 
@@ -138,6 +149,7 @@ Bundle 'leshill/vim-json'
 Bundle 'groenewege/vim-less'
 
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'slashmili/alchemist.vim'
 
 " Java Maven
 Bundle 'mikelue/vim-maven-plugin'
@@ -207,8 +219,8 @@ autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig filetype=html.twig
 autocmd BufNewFile,BufRead *.tsv set filetype=tsv
 autocmd BufNewFile,Bufread qissues set syntax=yaml
 autocmd BufNewFile,Bufread qissues.* set syntax=yaml
-autocmd BufNewFile,Bufread *.exs set syntax=elixir
-autocmd BufNewFile,Bufread *.ex set syntax=elixir
+autocmd BufNewFile,Bufread *.exs set syntax=elixir filetype=elixir
+autocmd BufNewFile,Bufread *.ex set syntax=elixir filetype=elixir
 
 " }}
 
@@ -455,6 +467,7 @@ let g:ctrlp_by_filename = 0
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.class
 set wildignore+=*/coverage/*
 set wildignore+=*/cache/*
+set wildignore+=*/target/*
 nnoremap <C-O> :CtrlPBuffer<cr>
 
 " }}}
@@ -470,6 +483,8 @@ nmap <Leader>e :Errors<cr>
 let g:syntastic_phpcs_disable = 1
 let g:syntastic_phpmd_disable = 1
 let g:syntastic_javascript_checkers = ['jshint']
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
 " }}}
 " >> phpctags {{{
@@ -478,6 +493,12 @@ let g:tagbar_phpctags_bin = '~/.vim/bin/phpctags/phpctags'
 if executable($HOME . "/myconfig/phpctags/phpctags")
     let g:tagbar_phpctags_bin=$HOME.'/myconfig/phpctags/phpctags'
 endif
+
+" }}}
+" >> tsuquyomi (typescript) {{{
+
+let g:tsuquyomi_shortest_import_path = 1
+let g:tsuquyomi_single_quote_import = 1
 
 " }}}
 " >> Tabularize {{{
@@ -489,14 +510,23 @@ vmap <Leader>a= :Tabularize /=<CR>
 nnoremap <Leader>a: :Tabularize /:<CR> 
 vnoremap <Leader>a: :Tabularize /:<CR> 
 "vnoremap <Leader>a| :Tabularize /|/<CR>
+nmap <Leader>af :Tabularize /from/<CR>
+vmap <Leader>af :Tabularize /from/<CR>
 
 " }}}
 " >> switch {{{
 
 let g:switch_custom_definitions =
     \ [
-    \   ['public', 'protected']
+    \   ['public', 'protected', 'private']
     \ ]
+
+" }}}
+" >> ultisnips {{{
+
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " }}}
 " }}}
@@ -515,5 +545,6 @@ vmap <leader>vh :w! ~/Pipes/http<cr>
 nmap <leader>fq :w! ~/Pipes/query<cr>
 vmap <leader>vq y:new /tmp/vimbuf<CR>VGp:x<CR>
 nmap <leader>gu :call EditUpstreamChanges()<CR>
+"
 
 

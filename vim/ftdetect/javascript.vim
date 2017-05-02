@@ -1,3 +1,4 @@
+" Detect javascript when its in the shebang
 fun! s:DetectNode()
     if getline(1) == '#!/usr/bin/env node'
         set ft=javascript

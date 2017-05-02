@@ -14,6 +14,8 @@ if(file.indexOf('tests') === 0) {
 process.stdout.write(
   file
     .replace('src/', 'tests/unit/')
+    .replace('.ts', '.spec.ts')
+    .replace('.spec.spec', '.spec')
     .replace('.js', '.spec.js')
 );
 

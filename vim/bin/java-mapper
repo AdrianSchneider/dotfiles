@@ -1,15 +1,124 @@
-#!/usr/bin/env php
-<?php
+#!/usr/bin/env node
+'use strict';
 
-$filename = str_replace('.java', '', $argv[1]);
-$filename = str_replace('src/main/java', 'src/test/java', $filename);
+/**
+ * Helpers for mapping java files to class names and to test files
+ * Assumes current working directory is the root of the project
+ * Attempts to support nested modules
+ */
+function JavaMapper() {
+  /**
+   * Gets the test filename for a given filename
+   * The test runner needs to be aware that this is not directly
+   * callable
+   *
+   * @param {String} filename
+   * @return {String} - test filename
+   */
+  this.fileToTest = function(filename) {
+    var out = filename
+      .replace('.java', '')
+      .replace('src/main/java', 'src/test/java');
 
-if (strpos($filename, 'Test') === false) {
-    $filename .= 'Test';
+    return out
+      .concat(out.indexOf('Test') === -1 ? 'Test' : '')
+      .concat(out.indexOf('.java') === -1 ? '.java' : '');
+  };
+
+  /**
+   * Gets the classname for a given filename
+   *
+   * @param {String} filename
+   * @return {String} - class name
+   */
+  this.fileToClass = function(filename) {
+    var replacements = {
+      'src/main/java/' : '',
+      'src/test/java/' : '',
+      '.java'          : '',
+      '/'              : '.'
+    };
+
+    return Object.keys(replacements).reduce(
+      function(out, key) {
+        return out.split(key).join(replacements[key]);
+      },
+      stripNestedModules(filename)
+    );
+  };
+
+  /**
+   * Strips out nested modules from the path
+   *
+   * @param {String} filename
+   * @return {String}
+   */
+  var stripNestedModules = function(filename) {
+    var srcPos = filename.indexOf('src/main/java/');
+    if (srcPos > -1) {
+      filename = filename.substr(srcPos);
+    }
+
+    var testPos = filename.indexOf('src/test/java/');
+    if (testPos > -1) {
+      filename = filename.substr(testPos);
+    }
+
+    return filename;
+  };
+
+  /**
+   * Gets the package name for a given filename
+   *
+   * @param {String} filename
+   * @return {String} - the package name (similar to `dirname`)
+   */
+  this.fileToPackage = function(filename) {
+    return this.fileToClass(filename)
+      .split('.')
+      .slice(0, -1)
+      .join('.');
+  };
+
+
+  /**
+   * Gets the class name (minus package) for a given filename
+   *
+   * @param {String} filename
+   * @return {String} - class name (similar to `basename`)
+   */
+  this.fileToJustClassName = function(filename) {
+    return this.fileToClass(filename)
+      .split('.')
+      .slice(-1)[0];
+  };
+
+  /**
+   * Gets the fully qualified source class name for a given test file (to be imported)
+   *
+   * @param {String} filename
+   * @return {String}
+   */
+  this.testFileToSourceClass = function(filename) {
+    var out = this.fileToClass(filename);
+    if (out.substr(0, -4) === 'Test') {
+        return out.substr(-4);
+    }
+
+    return out;
+  };
+
 }
 
-if (strpos($filename, '.java') === false) {
-    $filename .= '.java';
+
+var mapper = new JavaMapper();
+var command = process.argv[2];
+var args = process.argv.slice(3);
+
+if (typeof mapper[command] !== 'function') {
+  console.error('Cannot call java mapper.' + command);
+  process.exit(1);
 }
 
-echo $filename;
+var output = mapper[command].apply(mapper, args);
+process.stdout.write(output);

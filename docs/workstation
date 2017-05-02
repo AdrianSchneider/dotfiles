@@ -1,4 +1,0 @@
-sudo apt-get install -q -y pidgin
-sudo apt-get install -q -y xclip
-
-# https://launchpad.net/indicator-sysmonitor
