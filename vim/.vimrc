@@ -461,6 +461,7 @@ let g:ctrlp_by_filename = 0
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.class
 set wildignore+=*/coverage/*
 set wildignore+=*/cache/*
+set wildignore+=*/target/*
 nnoremap <C-O> :CtrlPBuffer<cr>
 
 " }}}
@@ -491,6 +492,7 @@ endif
 " >> tsuquyomi (typescript) {{{
 
 let g:tsuquyomi_shortest_import_path = 1
+let g:tsuquyomi_single_quote_import = 1
 
 " }}}
 " >> Tabularize {{{
@@ -514,6 +516,13 @@ let g:switch_custom_definitions =
     \ ]
 
 " }}}
+" >> ultisnips {{{
+
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" }}}
 " }}}
 " Custom functions and commands {{{ -------------------------------------------
 
@@ -531,9 +540,5 @@ nmap <leader>fq :w! ~/Pipes/query<cr>
 vmap <leader>vq y:new /tmp/vimbuf<CR>VGp:x<CR>
 nmap <leader>gu :call EditUpstreamChanges()<CR>
 "
-"" Ultisnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 
