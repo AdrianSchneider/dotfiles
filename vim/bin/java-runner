@@ -8,7 +8,7 @@ function map_file() {
 
 function run_test() {
   local className="$1"
-  mvn surefire:test -Dtest="$className" -DfailIfNoTests=false
+  mvn surefire:test -Dtest="$className" -DfailIfNoTests=false 2>&1  | grep -v ^\\[
 }
 
 function main() {
