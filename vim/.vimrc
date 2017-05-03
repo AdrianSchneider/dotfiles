@@ -61,9 +61,6 @@ Bundle 'airblade/vim-gitgutter'
 " Commenting hotkeys
 Bundle 'scrooloose/nerdcommenter'
 
-" Tab autocomplete
-Bundle 'Valloric/YouCompleteMe'
-
 " Automatically reload browser on save
 Bundle 'AdrianSchneider/vim-browser-reload-linux'
 
@@ -153,9 +150,6 @@ Bundle 'slashmili/alchemist.vim'
 
 " Java Maven
 Bundle 'mikelue/vim-maven-plugin'
-
-" Java Autocomplete
-Plugin 'artur-shaik/vim-javacomplete2'
 
 " Handlebars
 Plugin 'mustache/vim-mustache-handlebars'
