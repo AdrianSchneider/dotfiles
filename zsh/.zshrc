@@ -6,6 +6,7 @@ alias vimt="vim '+TddTarget test:1.0'"
 alias bp='say beep'
 alias ll='ls -alF'
 alias make='nocorrect make'
+alias kubectl='nocorrect kubectl'
 alias when='nocorrect when'
 alias ssh='nocorrect ssh'
 alias git='nocorrect git'
