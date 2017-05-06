@@ -13,7 +13,7 @@ if(file.indexOf('tests') === 0 && file.indexOf('.spec') !== -1) {
 
 process.stdout.write(
   file
-    .replace('src/', 'tests/unit/')
+    .replace('src/', 'tests/')
     .replace('.ts', '.spec.ts')
     .replace('.spec.spec', '.spec')
     .replace('.js', '.spec.js')
