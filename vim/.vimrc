@@ -61,11 +61,11 @@ Bundle 'airblade/vim-gitgutter'
 " Commenting hotkeys
 Bundle 'scrooloose/nerdcommenter'
 
-" Tab autocomplete
-Bundle 'Valloric/YouCompleteMe'
-
 " Automatically reload browser on save
 Bundle 'AdrianSchneider/vim-browser-reload-linux'
+
+" Autocomplete
+Bundle 'Valloric/YouCompleteMe'
 
 " TDD plugins: open test in split, run tests on save, etc.
 Bundle 'AdrianSchneider/vim-tdd'
@@ -479,6 +479,7 @@ let g:syntastic_phpmd_disable = 1
 let g:syntastic_javascript_checkers = ['jshint']
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+let g:syntastic_java_javac_delete_output = 0
 
 " }}}
 " >> phpctags {{{
