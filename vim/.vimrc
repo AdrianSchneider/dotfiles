@@ -66,6 +66,7 @@ Bundle 'AdrianSchneider/vim-browser-reload-linux'
 
 " Autocomplete
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'larrylv/ycm-elixir'
 
 " TDD plugins: open test in split, run tests on save, etc.
 Bundle 'AdrianSchneider/vim-tdd'
