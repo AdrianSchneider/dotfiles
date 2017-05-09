@@ -463,6 +463,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.class
 set wildignore+=*/coverage/*
 set wildignore+=*/cache/*
 set wildignore+=*/target/*
+set wildignore+=*/build/*
 nnoremap <C-O> :CtrlPBuffer<cr>
 
 " }}}
