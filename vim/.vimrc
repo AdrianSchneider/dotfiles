@@ -363,7 +363,7 @@ iabbrev clg console.log
 nnoremap vv ^v$h
 
 " Toggle wrapping
-nnoremap <Leader>w :setlocal nowrap! nolist!<cr>
+" nnoremap <Leader>w :setlocal nowrap! nolist!<cr>
 
 " clear search results
 map <Leader><space> :noh<cr>
@@ -386,6 +386,10 @@ nmap <leader>fd :set nofoldenable<cr>
 
 nmap <leader>! tdd#tmux#send('!!')<cr>
 nmap <leader>C tdd#tmux#send('C-c')<cr>
+
+call camelcasemotion#CreateMotionMappings('<leader>')
+
+
 
 " }}}
 " }}}
