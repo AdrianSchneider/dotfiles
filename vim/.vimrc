@@ -208,6 +208,7 @@ autocmd BufNewFile,BufRead *.hbs set filetype=mustache
 autocmd BufNewFile,BufRead *.less set syntax=css
 autocmd BufNewFile,BufRead *.less set filetype=less
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript
 autocmd BufNewFile,BufRead .vim.local set filetype=vim
 autocmd BufNewFile,BufRead *.xml.j2 set filetype=xml
 autocmd BufNewFile,BufRead *.html.twig set syntax=html.twig filetype=html.twig
@@ -468,6 +469,7 @@ set wildignore+=*/coverage/*
 set wildignore+=*/cache/*
 set wildignore+=*/target/*
 set wildignore+=*/build/*
+set wildignore+=*/dist/*
 nnoremap <C-O> :CtrlPBuffer<cr>
 
 " }}}
