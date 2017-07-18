@@ -37,7 +37,7 @@ runtime macros/matchit.vim
 " >> IDE / Core {{{
 
 " Open file/buffer by name
-Bundle 'ctrlp.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
 
 " Better file tree
 Bundle 'scrooloose/nerdtree'
@@ -502,12 +502,16 @@ let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'web/coverage/|cache/'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 0
+let g:ctrlp_lazy_update = 1
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.class
 set wildignore+=*/coverage/*
 set wildignore+=*/cache/*
 set wildignore+=*/target/*
 set wildignore+=*/build/*
 set wildignore+=*/dist/*
+set wildignore+=*/node_modules/*
+set wildignore+=*/vendor/*
+set wildignore+=*/bower_components/*
 nnoremap <C-O> :CtrlPBuffer<cr>
 
 " }}}
