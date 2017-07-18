@@ -484,8 +484,6 @@ let g:codi#interpreters = {
    \}
 let g:codi#log="/tmp/codi"
 
-
-
 " }}}
 " >> phpqa {{{
 
@@ -515,7 +513,6 @@ nnoremap <C-O> :CtrlPBuffer<cr>
 " }}}
 " >> ale and syntastic(syntax) {{{
 
-nmap <Leader>e :Errors<cr>
 let g:tsuquyomi_disable_quickfix = 1
 let g:ale_java_javac_options = '-Xlint -Xlint:-serial'
 let g:syntastic_java_javac_delete_output = 0
