@@ -4,4 +4,4 @@
 include __DIR__ . '/TestFinder.php';
 $finder = new TestFinder();
 
-echo $finder->findTestFile($argv[1]);
+echo $finder->findOldTestFile($argv[1]);
