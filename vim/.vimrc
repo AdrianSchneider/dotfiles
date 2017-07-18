@@ -5,6 +5,14 @@
 
 " oops
 let g:tdd_pipe=''
+
+let g:ale_emit_conflict_warnings = 0
+if isdirectory("./.idea")
+  let g:loaded_ale_dont_use_this_in_other_plugins_please = 1
+else
+  let g:loaded_syntastic_plugin = 1
+endif
+
 set nocompatible
 autocmd!
 filetype off
@@ -53,8 +61,11 @@ Bundle 'mileszs/ack.vim'
 " Snippets
 Plugin 'SirVer/ultisnips'
 
-" Syntax checkers for various languages
+" Async syntax checker
 Bundle 'w0rp/ale'
+
+" Sync syntax checker (use one at a time)
+Bundle 'syntastic'
 
 " Color scheme
 Bundle 'vim-scripts/wombat256.vim'
@@ -500,11 +511,12 @@ set wildignore+=*/dist/*
 nnoremap <C-O> :CtrlPBuffer<cr>
 
 " }}}
-" >> ale (syntax) {{{
+" >> ale and syntastic(syntax) {{{
 
 nmap <Leader>e :Errors<cr>
 let g:tsuquyomi_disable_quickfix = 1
-let g:ale_lint_on_text_changed = 'never'
+let g:ale_java_javac_options = '-Xlint -Xlint:-serial'
+let g:syntastic_java_javac_delete_output = 0
 
 " }}}
 " >> ctags {{{
