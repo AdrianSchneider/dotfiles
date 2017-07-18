@@ -35,7 +35,14 @@ Bundle 'ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 
 " Better statusbar
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
+
+" Tags
+Bundle 'majutsushi/tagbar'
+
+" REPL
+Bundle 'metakirby5/codi.vim'
 
 " Git integration
 Bundle 'fugitive.vim'
@@ -47,7 +54,7 @@ Bundle 'mileszs/ack.vim'
 Plugin 'SirVer/ultisnips'
 
 " Syntax checkers for various languages
-Bundle 'scrooloose/syntastic'
+Bundle 'w0rp/ale'
 
 " Color scheme
 Bundle 'vim-scripts/wombat256.vim'
@@ -146,6 +153,7 @@ Bundle 'leshill/vim-json'
 " LESS (css) support
 Bundle 'groenewege/vim-less'
 
+" Elixir
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'slashmili/alchemist.vim'
 
@@ -439,6 +447,12 @@ nnoremap <c-h> :SidewaysLeft<cr>
 nnoremap <c-l> :SidewaysRight<cr>
 
 " }}}
+" >> Airline {{{
+
+let g:airline_theme='wombat'
+
+
+" }}}
 " >> nerdtree {{{
 
 let g:NERDTreeWinSize=40
@@ -449,6 +463,19 @@ let g:NERDTreeIgnore=['\.git$', '\.class$']
 nmap <Leader>n :NERDTreeCWD<cr>
 nmap <Leader>nf :NERDTreeFind<cr>
 nmap <Leader>nc :NERDTreeClose<cr>
+
+" }}}
+" >> REPL {{{
+
+let g:codi#interpreters = {
+       \ 'javascript': {
+           \ 'bin': ['node', '-e', 'require("repl").start({ignoreUndefined: true, useGlobal: true})'],
+           \ 'prompt': '^\(>\|\.\.\.\+\) ',
+       \ },
+   \}
+let g:codi#log="/tmp/codi"
+
+
 
 " }}}
 " >> phpqa {{{
@@ -473,26 +500,31 @@ set wildignore+=*/dist/*
 nnoremap <C-O> :CtrlPBuffer<cr>
 
 " }}}
-" >> Powerline {{{
-
-let g:Powerline_symbols = 'unicode'
-call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
-
-" }}}
-" >> syntastic {{{
+" >> ale (syntax) {{{
 
 nmap <Leader>e :Errors<cr>
-let g:syntastic_phpcs_disable = 1
-let g:syntastic_phpmd_disable = 1
-let g:syntastic_javascript_checkers = ['jshint']
 let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
-let g:syntastic_java_javac_delete_output = 0
+let g:ale_lint_on_text_changed = 'never'
 
 " }}}
-" >> phpctags {{{
+" >> ctags {{{
 
-let g:tagbar_phpctags_bin = '~/.vim/bin/phpctags/phpctags'
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+let g:tagbar_type_typescript = {
+  \ 'ctagstype': 'typescript',
+  \ 'kinds': [
+    \ 'c:classes',
+    \ 'n:modules',
+    \ 'f:functions',
+    \ 'v:variables',
+    \ 'v:varlambdas',
+    \ 'm:members',
+    \ 'i:interfaces',
+    \ 'e:enums',
+  \ ]
+  \ }
+let g:tagbar_phpctags_bin = '/usr/local/bin/phpctags'
+let g:tagbar_sort=0
 if executable($HOME . "/myconfig/phpctags/phpctags")
     let g:tagbar_phpctags_bin=$HOME.'/myconfig/phpctags/phpctags'
 endif
@@ -510,8 +542,8 @@ nmap <Leader>a& :Tabularize /&<CR>
 vmap <Leader>a& :Tabularize /&<CR>
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
-nnoremap <Leader>a: :Tabularize /:<CR> 
-vnoremap <Leader>a: :Tabularize /:<CR> 
+nnoremap <Leader>a: :Tabularize /:<CR>
+vnoremap <Leader>a: :Tabularize /:<CR>
 "vnoremap <Leader>a| :Tabularize /|/<CR>
 nmap <Leader>af :Tabularize /from/<CR>
 vmap <Leader>af :Tabularize /from/<CR>
