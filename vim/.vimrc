@@ -373,8 +373,6 @@ cnoreabbrev Qall qall
 cnoreabbrev Vs vs
 
 iabbrev conosle console
-iabbrev clog console.log
-iabbrev clg console.log
 
 " }}}
 " >> new mappings {{{
