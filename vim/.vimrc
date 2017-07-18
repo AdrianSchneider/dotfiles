@@ -272,7 +272,7 @@ set ttyfast
 set history=500
 set nowrap
 set linebreak
-set showcmd
+set noshowcmd
 set nostartofline
 set hidden
 set backspace=indent,eol,start
@@ -281,7 +281,8 @@ set relativenumber
 set autoread
 set splitright
 set shortmess=atI
-set cursorline
+set nocursorline
+set lazyredraw
 
 set autoindent
 set smartindent
