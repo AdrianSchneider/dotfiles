@@ -65,7 +65,7 @@ Plugin 'SirVer/ultisnips'
 Bundle 'w0rp/ale'
 
 " Sync syntax checker (use one at a time)
-Bundle 'syntastic'
+Bundle 'vim-syntastic/syntastic'
 
 " Color scheme
 Bundle 'vim-scripts/wombat256.vim'
