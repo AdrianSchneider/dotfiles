@@ -57,6 +57,7 @@ Bundle 'fugitive.vim'
 
 " Ack integration
 Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-dispatch'
 
 " Snippets
 Plugin 'SirVer/ultisnips'
@@ -569,6 +570,11 @@ let g:switch_custom_definitions =
     \   ['public', 'protected', 'private'],
     \   ['var', 'const', 'let']
     \ ]
+
+" }}}
+" >> ack {{{
+
+let g:ack_use_dispatch = 1
 
 " }}}
 " >> ultisnips {{{
