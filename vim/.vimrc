@@ -129,6 +129,9 @@ Bundle 'AndrewRadev/switch.vim'
 " Split and join text lines better
 Bundle 'AndrewRadev/splitjoin.vim'
 
+" commenting verb
+Bundle 'tpope/vim-commentary'
+
 " }}}
 " >> Language Specific {{{
 
