@@ -272,11 +272,9 @@ set pastetoggle=<F12>
 set laststatus=2
 set visualbell t_vb=
 set formatoptions+=croqnwl
-set ttyfast
 set history=500
 set nowrap
 set linebreak
-set noshowcmd
 set nostartofline
 set hidden
 set backspace=indent,eol,start
@@ -285,8 +283,13 @@ set relativenumber
 set autoread
 set splitright
 set shortmess=atI
+
+" perfomrance tweaks
+set ttyfast
+set noshowcmd
 set nocursorline
 set lazyredraw
+set regexpengine=1
 
 set autoindent
 set smartindent
