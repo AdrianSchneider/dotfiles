@@ -520,11 +520,17 @@ set wildignore+=*/bower_components/*
 nnoremap <C-O> :CtrlPBuffer<cr>
 
 " }}}
-" >> ale and syntastic(syntax) {{{
+" >> ALE {{{
 
-let g:tsuquyomi_disable_quickfix = 1
 let g:ale_java_javac_options = '-Xlint -Xlint:-serial'
+
+" }}}
+" >> syntastic {{{
+
 let g:syntastic_java_javac_delete_output = 0
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 1
+
 
 " }}}
 " >> ctags {{{
@@ -552,6 +558,7 @@ endif
 " }}}
 " >> tsuquyomi (typescript) {{{
 
+let g:tsuquyomi_disable_quickfix = 1
 let g:tsuquyomi_shortest_import_path = 1
 let g:tsuquyomi_single_quote_import = 1
 
