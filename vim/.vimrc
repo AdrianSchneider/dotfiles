@@ -178,6 +178,10 @@ Bundle 'mikelue/vim-maven-plugin'
 " Handlebars
 Plugin 'mustache/vim-mustache-handlebars'
 
+" Solidity
+Plugin 'tomlion/vim-solidity'
+
+
 " }}}
 " >> Miscellaneous {{{
 
@@ -240,6 +244,7 @@ autocmd BufNewFile,Bufread qissues set syntax=yaml
 autocmd BufNewFile,Bufread qissues.* set syntax=yaml
 autocmd BufNewFile,Bufread *.exs set syntax=elixir filetype=elixir
 autocmd BufNewFile,Bufread *.ex set syntax=elixir filetype=elixir
+autocmd BufNewFile,Bufread *.sol set syntax=solidity filetype=solidity
 
 " }}
 
