@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ln -s ~/Projects/adrian/dotfiles/bin/battery ~/bin/battery
