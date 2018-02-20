@@ -76,3 +76,4 @@ export NVM_DIR="$HOME/.nvm"
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 # }}}
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
