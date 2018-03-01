@@ -12,6 +12,14 @@ function repeatedly() {
   while true; do clear; $2; sleep $1; done
 }
 
+# Runs a command until it dies, good for testing stability
+function untildeath() {
+  let i=0;
+  command="$@"
+  while bash -c "$command" && i=$((i+1)) && sleep 1; do :; done;
+  echo "Ran $i times before failing"
+}
+
 # Check the result of the last program? (legacy stuff... hmm)
 function eh() {
     code=$?
