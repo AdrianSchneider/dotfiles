@@ -1,5 +1,6 @@
 unalias gcl 2> /dev/null
 unalias gco 2> /dev/null
+unalias gpu 2> /dev/null
 
 # Create new repository
 alias ginit='git init; git commit --allow-empty -m "initial commit";'
@@ -48,6 +49,11 @@ function gdu() {
     else
         git diff "$branch"
     fi
+}
+
+# pushes the current branch up, and sets up tracking
+function gpu() {
+    git push -u origin $(git rev-parse --abbrev-ref HEAD)
 }
 
 # Delete branch interactively
