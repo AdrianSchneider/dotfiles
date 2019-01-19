@@ -20,6 +20,14 @@ function untildeath() {
   echo "Ran $i times before failing"
 }
 
+# Runs a command until it dies, good for testing stability
+function untillife() {
+  let i=0;
+  command="$@"
+  while bash -c "! $command" && i=$((i+1)) && sleep 1; do :; done;
+  echo "Ran $i times before passing"
+}
+
 # Check the result of the last program? (legacy stuff... hmm)
 function eh() {
     code=$?
@@ -31,6 +39,10 @@ function eh() {
     fi
 }
 
-function notify() {
-    terminal-notifier -title "$1" -message "$2";
+function lmk() {
+    if $@; then
+        notify "$@" "Command Succeeded"
+    else
+        notify "$@" "Command FAILED"
+    fi
 }

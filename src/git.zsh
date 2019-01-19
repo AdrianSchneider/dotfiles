@@ -30,11 +30,6 @@ function gco() {
     git checkout $(select_branch)
 }
 
-# Interactively checkout a latest branch
-function gcl() {
-    git checkout $(git latest | selecta)
-}
-
 # Interactively delete a branch
 function gdb() {
     git branch -D $(git bs --color=always | selecta)
@@ -58,7 +53,7 @@ function gpu() {
 
 # Delete branch interactively
 function gdb() {
-    git branch -D $(git branch | selecta)
+    git branch -D $(select_branch)
 }
 
 # Interactively delete branches until exit
@@ -66,4 +61,10 @@ function gdbs() {
     while true; do
         gdb
     done
+}
+
+function vimd() {
+  local base="${1:-HEAD}"
+  local files=$(git -c status.relativePaths=true diff --name-only "$base" -- . | xargs -I '{}' realpath --relative-to=. $(git rev-parse --show-toplevel)/'{}' | xargs)
+  vim $(echo "$files")
 }
