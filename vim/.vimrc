@@ -53,11 +53,15 @@ Bundle 'majutsushi/tagbar'
 Bundle 'metakirby5/codi.vim'
 
 " Git integration
-Bundle 'fugitive.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'unimpaired.vim'
+Bundle 'tpope/vim-rhubarb'
+Bundle 'lambdalisue/vim-gita'
 
 " Ack integration
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-dispatch'
+Bundle 'joshdick/vim-action-ack'
 
 " Snippets
 Plugin 'SirVer/ultisnips'
@@ -79,9 +83,6 @@ Bundle 'airblade/vim-gitgutter'
 
 " Commenting hotkeys
 Bundle 'scrooloose/nerdcommenter'
-
-" Automatically reload browser on save
-Bundle 'AdrianSchneider/vim-browser-reload-linux'
 
 " Autocomplete
 Bundle 'Valloric/YouCompleteMe'
@@ -132,6 +133,9 @@ Bundle 'AndrewRadev/splitjoin.vim'
 " commenting verb
 Bundle 'tpope/vim-commentary'
 
+" casing, etc
+Bundle 'tpope/vim-abolish'
+
 " }}}
 " >> Language Specific {{{
 
@@ -155,6 +159,8 @@ Bundle 'techlivezheng/tagbar-phpctags'
 
 " Javascript support
 Bundle 'pangloss/vim-javascript'
+
+Bundle 'heavenshell/vim-prettier'
 
 " Python support
 Bundle 'hdima/python-syntax'
@@ -187,6 +193,16 @@ Plugin 'tomlion/vim-solidity'
 
 " vim-highlighted 'vimcat' command
 Bundle 'rkitover/vimpager'
+
+" highlight word under cursor after delay
+Bundle 'RRethy/vim-illuminate'
+" }}}
+" >> Collaboration Tools {{{
+
+Bundle 'junkblocker/patchreview-vim'
+Bundle 'codegram/vim-codereview'
+Bundle 'vim-codereviewer'
+
 " }}}
 " }}}
 " Filetype specific options {{{ -----------------------------------------------
@@ -262,10 +278,11 @@ autocmd BufNewFile,BufRead *.md execute "setf markdown"
 " }}}
 " Custom highlighting  {{{ ----------------------------------------------------
 
-colorscheme wombat256
+colorscheme wombat256mod
 highlight Normal ctermbg=None
 hi Folded ctermfg=216
 hi Folded ctermbg=None
+hi illuminatedWord cterm=underline gui=underline ctermfg=216
 
 " }}}
 " General options {{{ ---------------------------------------------------------
@@ -289,6 +306,7 @@ set relativenumber
 set autoread
 set splitright
 set shortmess=atI
+set tabpagemax=100
 
 " perfomrance tweaks
 set ttyfast
@@ -331,7 +349,7 @@ endif
 
 if has("wildmenu")
     set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.git
-    set wildignore+=*~,*.swp,*.tmp,.DS_Store,coverage
+    set wildignore+=*~,*.swp,*.tmp,.DS_Store,coverage,tags
     set wildmenu
     set wildmode=longest,list
 endif
@@ -369,6 +387,9 @@ map ; :
 " Change regex handling
 nnoremap / /\v
 vnoremap / /\v
+
+" prevent * from going to next result
+nmap * *``
 
 " training wheels
 map <up> <nop>
@@ -421,6 +442,12 @@ nmap <leader>C tdd#tmux#send('C-c')<cr>
 
 call camelcasemotion#CreateMotionMappings('<leader>')
 
+nnoremap <c-j> :ALENextWrap<CR>
+nnoremap <c-k> :ALEPreviousWrap<CR>
+nnoremap <leader>= :ALEFix<CR>
+
+nnoremap <leader>ha :GitGutterStageHunk<CR>
+nnoremap <leader>hr :GitGutterStageHunk<CR>
 
 
 " }}}
@@ -449,6 +476,9 @@ endfunction
 
 " }}}
 " >> fugitive (git) {{{
+"
+
+set diffopt+=vertical
 
 nmap <Leader>gs :Gstatus<cr>
 nmap <Leader>gd :Gdiff<cr>
@@ -474,6 +504,7 @@ nnoremap <c-l> :SidewaysRight<cr>
 
 let g:airline_theme='wombat'
 let g:airline_powerline_fonts=1
+let g:airline#extensions#tagbar#enabled = 0
 
 
 " }}}
@@ -594,6 +625,7 @@ let g:switch_custom_definitions =
 " >> ack {{{
 
 let g:ack_use_dispatch = 1
+vnoremap <Leader>a y:Ack <C-r>=fnameescape(@")<CR><CR>
 
 " }}}
 " >> ultisnips {{{
@@ -610,15 +642,18 @@ if filereadable(".vim.local")
     so .vim.local
 endif
 
-function! EditUpstreamChanges()
-    execute "args " . system('git_upstream_changes | xargs')
-endfunction
-
 nmap <leader>fh :w! ~/Pipes/http<cr>
 vmap <leader>vh :w! ~/Pipes/http<cr>
 nmap <leader>fq :w! ~/Pipes/query<cr>
 vmap <leader>vq y:new /tmp/vimbuf<CR>VGp:x<CR>
-nmap <leader>gu :call EditUpstreamChanges()<CR>
+
+" format json file
+nmap <leader>jq= :%!jq .<CR>
+"
+" format json file (and sort by key)
+nmap <leader>jqs :%!jq -S .<CR>
+
+
 "
 
 
