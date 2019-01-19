@@ -1,18 +1,3 @@
-# Generic Aliases {{{
-
-alias copy='pbcopy'
-alias paste='pbpaste'
-alias vimt="vim '+TddTarget test:1.0'"
-alias bp='say beep'
-alias ll='ls -alF'
-alias make='nocorrect make'
-alias kubectl='nocorrect kubectl'
-alias when='nocorrect when'
-alias ssh='nocorrect ssh'
-alias git='nocorrect git'
-alias ccff='make coverage; open coverage/index.html'
-
-# }}}
 # ZSH Setup {{{
 
 ZSH=$HOME/.oh-my-zsh
@@ -57,6 +42,24 @@ bindkey '^w' backward-kill-word
 
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward
+
+# }}}
+# Generic Aliases {{{
+
+alias copy='pbcopy'
+alias paste='pbpaste'
+alias vimt="vim '+TddTarget test:1.0'"
+alias bp='say beep'
+alias sayy='say $(tmux display-message -p "#S"). '
+alias ll='ls -alF'
+alias vim='/usr/local/bin/vim';
+alias make='nocorrect make'
+alias kubectl='nocorrect kubectl'
+alias when='nocorrect when'
+alias ssh='nocorrect ssh'
+alias git='nocorrect git'
+alias ccff='make coverage; open coverage/index.html'
+alias qrcode='qrencode -o - -t UTF8'
 
 # }}}
 # System settings {{{
