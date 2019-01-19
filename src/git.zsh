@@ -14,9 +14,14 @@ function pr() {
     hub pull-request -b "$upstream"
 }
 
+# show recent branches
+function git_recent_branches() {
+    git branch -vvv --color=always --sort=committerdate | tail -r
+}
+
 # Interactively pick a branch (for scripting)
 function select_branch() {
-    git bs --color=always $1 | tr -d '*' | selecta | perl -pe 's/\e\[?.*?[\@-~]//g' | awk '{print $1}'
+    git_recent_branches | tr -d '*' | selecta | perl -pe 's/\e\[?.*?[\@-~]//g' | awk '{print $1}' 
 }
 
 # Interactively checkout a branch
