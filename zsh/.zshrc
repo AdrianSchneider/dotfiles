@@ -34,6 +34,10 @@ for file in ~/dotfiles/src/*; do
   source "$file"
 done
 
+# automatically source .envrc files
+eval "$(direnv hook zsh)"
+
+
 # }}}
 # Vim Mode {{{
 
