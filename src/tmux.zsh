@@ -22,3 +22,35 @@ function goto() {
   fi
   tmux switch-client -t $session
 }
+
+function tmux_whereami() {
+  tmux_session_info $(tmux display-message -p '#S')
+}
+
+function tmux_session_info() {
+  local session="$1"
+  echo "$session $(tmux_session_root "$session" | xargs basename) ($(tmux_branch_from_session $session))";
+}
+
+function tmux_sessions_with_branches() {
+  tmux list-sessions \
+    | sed -E 's/:.*$//' \
+    | while read session; do tmux_session_info "$session"; done \
+    | column -t
+}
+
+function tmux_session_root() {
+  local session="$1"
+  (
+    cd $(tmux display-message -p -t "$session:1.0" -F '#{pane_current_path}')
+    git rev-parse --show-toplevel 2> /dev/null || pwd
+  )
+}
+
+function tmux_branch_from_session() {
+  local session="$1"
+  (
+    cd $(tmux display-message -p -t "$session:1.0" -F '#{pane_current_path}')
+    git rev-parse --abbrev-ref HEAD
+  )
+}
