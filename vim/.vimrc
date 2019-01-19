@@ -245,6 +245,7 @@ autocmd BufNewFile,Bufread qissues.* set syntax=yaml
 autocmd BufNewFile,Bufread *.exs set syntax=elixir filetype=elixir
 autocmd BufNewFile,Bufread *.ex set syntax=elixir filetype=elixir
 autocmd BufNewFile,Bufread *.sol set syntax=solidity filetype=solidity
+autocmd BufNewFile,BufRead Dockerfile* set filetype=dockerfile syntax=dockerfile
 
 " }}
 
