@@ -2,4 +2,23 @@ snippet wat "does something"
 console.log('wat');
 endsnippet
 
+snippet try "wraps code in a try/catch block"
+try {
+  ${VISUAL}
+} catch (e) {
+  $1
+}
+endsnippet
 
+snippet describe
+describe('$1', () => {
+  ${0:${VISUAL}}
+});
+endsnippet
+
+
+snippet it
+it('$1', () => {
+  ${0:${VISUAL}}
+});
+endsnippet
