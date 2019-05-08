@@ -22,3 +22,61 @@ it('$1', () => {
   ${0:${VISUAL}}
 });
 endsnippet
+
+snippet nclass "creates a new class"
+export default class $1 {
+
+}
+endsnippet
+
+snippet react.component "creates a new class-based component"
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class $1 extends React.Component {
+  render(props) {
+    return (
+
+    );
+  }
+}
+
+$1.defaultProps = {
+};
+
+$1.propTypes = {
+};
+
+export default $1;
+endsnippet
+
+snippet react.pure "creates a new pure component"
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const $1 = () => (
+  
+);
+
+$1.defaultProps = {
+};
+
+$1.propTypes = {
+};
+
+export default $1;
+endsnippet
+
+snippet react.test "creates a react test"
+import React from 'react';
+import { mount, render, shallow } from 'enzyme';
+import $1 from '../$1';
+
+describe('$1 Component', () => {
+  it('Renders', () => {
+    const c = mount(<$1 />);
+    expect(!!c).toEqual(true);
+  });
+});
+
+endsnippet

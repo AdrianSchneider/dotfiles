@@ -50,7 +50,7 @@ Bundle 'vim-airline/vim-airline-themes'
 Bundle 'majutsushi/tagbar'
 
 " REPL
-Bundle 'metakirby5/codi.vim'
+Bundle 'jpalardy/vim-slime'
 
 " Git integration
 Bundle 'tpope/vim-fugitive'
@@ -86,7 +86,6 @@ Bundle 'scrooloose/nerdcommenter'
 
 " Autocomplete
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'larrylv/ycm-elixir'
 
 " TDD plugins: open test in split, run tests on save, etc.
 Bundle 'AdrianSchneider/vim-tdd'
@@ -408,6 +407,7 @@ cnoreabbrev Qall qall
 cnoreabbrev Vs vs
 
 iabbrev conosle console
+iabbrev notificatoin notification
 
 " }}}
 " >> new mappings {{{
@@ -417,6 +417,9 @@ nnoremap vv ^v$h
 
 " Toggle wrapping
 " nnoremap <Leader>w :setlocal nowrap! nolist!<cr>
+
+" Search selection
+vnoremap * y/\V<C-r>=escape(@",'/\')<CR><CR>``
 
 " clear search results
 map <Leader><space> :noh<cr>
@@ -560,6 +563,8 @@ nnoremap <C-O> :CtrlPBuffer<cr>
 " >> ALE {{{
 
 let g:ale_java_javac_options = '-Xlint -Xlint:-serial'
+let g:ale_set_highlights = 0
+let g:ale_fix_on_save = 0
 
 " }}}
 " >> syntastic {{{
@@ -635,6 +640,13 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " }}}
+" >> vim-slime (REPL) {{{
+
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+let g:slime_dont_ask_default = 1
+
+" }}}
 " }}}
 " Custom functions and commands {{{ -------------------------------------------
 
@@ -655,5 +667,3 @@ nmap <leader>jqs :%!jq -S .<CR>
 
 
 "
-
-
