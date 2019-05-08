@@ -8,7 +8,7 @@ DISABLE_AUTO_TITLE="true"
 unsetopt histverify
 
 
-plugins=(git git-extras history node npm symfony2 tmux docker ssh-agent)
+plugins=(git git-extras history node npm symfony2 tmux docker ssh-agent nvm)
 
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin
 
