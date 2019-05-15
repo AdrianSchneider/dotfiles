@@ -186,6 +186,9 @@ Plugin 'mustache/vim-mustache-handlebars'
 " Solidity
 Plugin 'tomlion/vim-solidity'
 
+" Markdown
+Plugin 'SidOfc/mkdx'
+
 
 " }}}
 " >> Miscellaneous {{{
